@@ -15,11 +15,31 @@
 \usepackage{cite}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{graphicx}	
+\usepackage{listings}   
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\colour{green!40!black},
+  commentstyle=\itshape\colour{purple!40!black},
+  identifierstyle=\colour{blue},
+  stringstyle=\colour{orange},
+}	
+
+\usepackage{color}
+\usepackage{float}
 
 %in the preamble
 %--------------------------------
  \usepackage{natbib}
- \bibliographystyle{humannat}
+ %\bibliographystyle{humannat}
+  \bibliographystyle{plain}
+ 
 %--------------------------------
 
 \usepackage{array}
@@ -40,18 +60,18 @@
 
 % first page header and dates information
 
-\newcommand{\YEAR}{2020}
+\newcommand{\YEAR}{2022}
 \newcommand{\VOLUME}{1}
 \newcommand{\NUMBER}{1}
-\newcommand{\DOI}{10.2478/arsa-2020-0001}
+\newcommand{\DOI}{10.2478/arsa-2022-0001}
 \setcounter{page}{1} 
 
-\newcommand{\RECEIVED}{2020-01-01}
-\newcommand{\REVIEWEDfirst}{2020-01-15 }
+\newcommand{\RECEIVED}{2022-03-06}
+\newcommand{\REVIEWEDfirst}{2022-xx-xx }
 \newcommand{\REVIEWERfirst}{A. Reviewer1}
-\newcommand{\REVIEWEDsecond}{2020-01-20 }
+\newcommand{\REVIEWEDsecond}{2022-xx-xx }
 \newcommand{\REVIEWERsecond}{B. Reviewer2}
-\newcommand{\ACCEPTED}{2020-01-25}
+\newcommand{\ACCEPTED}{2022-xx-xx }
 
 % header
 
@@ -98,7 +118,7 @@
 % title 
 
 \begin{center}{\large\bf\uppercase{
-Quantitative processing of geophysical data using R and GMT scripting techniques for mapping Zagros fold and thrust belt, Iran}}
+Gravity field and geoid variations with respect to geomorphology of Zagros Fold and Thrust Belt, Iran}}
 \end{center}
 
 \vspace*{4pt}
@@ -107,7 +127,7 @@ Quantitative processing of geophysical data using R and GMT scripting techniques
 
 \begin{center}
 Polina \uppercase{Lemenkova} \\
-Université Libre de Bruxelles, École polytechnique de Bruxelles (EPB, Brussels Faculty of Engineering), Laboratory of Image Synthesis and Analysis, Bld. L, Campus de Solbosch CP131/3, Avenue Franklin D. Roosevelt 50, B-1050 Brussels, Belgium. ORCID ID: https://orcid.org/0000-0002-5759-1089 \\
+Université Libre de Bruxelles, École polytechnique de Bruxelles (EPB, Brussels Faculty of Engineering), Laboratory of Image Synthesis and Analysis, Building L, Campus de Solbosch CP131/3, Avenue Franklin D. Roosevelt 50, B-1050 Brussels, Belgium. ORCID ID: https://orcid.org/0000-0002-5759-1089 \\
 e-mails: polina.lemenkova@ulb.be ; pauline.lemenkova@gmail.com \\
 \end{center}
 
@@ -115,7 +135,7 @@ e-mails: polina.lemenkova@ulb.be ; pauline.lemenkova@gmail.com \\
 
 % abstract and keywords
 
-{\bf ABSTRACT.} Integrated geophysical mapping benefits from visualizing multi-source high-resolution  datasets including gravity and satellite altimetry data using 2D and 3D techniques. Applying scripting cartographic approach by R language and GMT supported by traditional mapping in QGIS is presented in this paper with a case study of Iran geomorphology and a special focus on Zagros fold and thrust belt, a unique landform of the country affected by complex geodynamic structure. Using several modules of GMT and two packages of R ('tmap' and 'raster') have been shown as examples of scripts to illustrate the efficiency of the console-based mapping. The cartographic objective was to visualize thematic geophysical maps of Iran: topography, geology, satellite derived gravity anomalies, geoid undulations and geomorphology. A series of maps is aimed at comparative analysis of variables. In the presented maps, various cartographic techniques were applied to effectively present geophysical and topographic field gradients, categorical variations in geological structure and relief along the Zagros. The locations and values of Elburz, Zagros, Kopet Dag and Makran slopes, Dasht-e Kavir, Dasht-e Lut and Great Salt Desert were visualised using 3D-and 2D techniques. Morphometric properties (slope, aspect, hillshade, elevations) were modelled by R. High resolution data included GEBCO/SRTM, EGM-2008, DEM. The novelty consists in new 11 maps created using a combination of scripting techniques and GIS. Nine (9) listings of R and GMT scripting are provided for repeatability.
+{\bf ABSTRACT.} Integrated geophysical mapping benefits from visualizing multi-source datasets including gravity and satellite altimetry data using 2D and 3D techniques. Applying scripting cartographic approach by R language and GMT supported by traditional mapping in QGIS is presented in this paper with a case study of Iran geomorphology and a special focus on Zagros fold and thrust belt, a unique landform of the country affected by complex geodynamic structure. Using several modules of GMT and two packages of R ('tmap' and 'raster') have been shown as examples of scripts to illustrate the efficiency of the console-based mapping for high-resolution data visualization. The cartographic objective was to visualize thematic geophysical maps of Iran: topography, geology, satellite derived gravity anomalies, geoid undulations and geomorphology. A series of maps is aimed at comparative analysis of variables. In the presented maps, various cartographic techniques were applied to effectively present geophysical and topographic field gradients, categorical variations in geological structure and relief along the Zagros. The locations and values of Elburz, Zagros, Kopet Dag and Makran slopes, Dasht-e Kavir, Dasht-e Lut and Great Salt Desert were visualised using 3D-and 2D techniques. Morphometric properties (slope, aspect, hillshade, elevations) were modelled by R. High resolution data included GEBCO/SRTM, EGM-2008, DEM. The novelty consists in new 11 maps created using a combination of scripting techniques and GIS. Nine (9) listings of R and GMT scripting are provided for repeatability.
 
 \newpar {\bf Keywords:} R, GMT, Gravity, Satellite Altimetry, Geophysics, Zagros, Iran, Mapping, QGIS.
 
@@ -127,16 +147,16 @@ The study focuses on the geomorphological 2D and 3D mapping of the Zagros Fold-a
 
 Variations in the geomorphic structures of the Zagros fold and thrust belt system are a significant indicator on the distribution of mineral resources, since Zagros region belongs to the key basins of the oil and gas reserves in the Middle East, e.g. with prolific petroleum plays in the Zagros Foreland \cite{Bosold}. Spatial geological structure of the Zagros Basin differs from SW to NE dividing the basin into the three major zones: foredeep, simply folded, and thrust fault. Spatial difference sin geological structure are reflected in the distribution of mineral deposits: the oil fields are mostly located in the foredeep zone, gas fields – in the simply folded zone and only few fields are in the thrust fault zone. The belt of prolific oil and gas fields is bounded on the NE by the high Zagros mountains and on the south and west by the outcropping crystalline basement of the Arabian Shield \cite{Beydoun}. 
 
+\begin{figure}[t]\centering
+	\includegraphics[width=13cm]{Fig_01.jpg}
+\caption{Topographic map of Iran. Mapping: GMT. Source: author.}\label{Fig-1}
+\end{figure}
+
 The Zagros orogenic belt of Iran consists, from NE to SW, of the parallel tectonic subdivisions with the increased intensity of deformation NE from the Persian Gulf-Mesopotamian basin: 1) the Urumieh-Dokhtar Magmatic Assemblage; 2)  the Sanandaj-Sirjan Zone; 3) the Zagros Simply Folded Belt \cite{Alavi1994}. Enhanced understanding of the geologic and tectonic processes taking place in Zagros fold and thrust belt, and the role of these processes in distribution of mineral resources of Iran, is vital for improving both geologic prognosis and predictions of oils and gas plays, and for environmental modeling aimed at regional geomorphological and applied geologic analysis: water runoff, landslide monitoring, earthquake and seismic mapping.
 
-Recent studies focus mainly on regional geologic analysis of Zagros and Makran and the comparative analysis of the tectonic structure with respect to geologic evolution of the Zagros Basin. Technical approaches of these studies are diverse. For instance, \cite{Palano}, \cite{Bayer}, \cite{Masson} studied active crustal deformation field for the Zagros Fold-and-Thrust Belt continental collision zone by GPS measurement approach; \cite{Lemenkova2020a} used cross-sectional profiles to visualize submarine geomorphology of the Makran Trench; \cite{Motaghi} used seismic linear profiling to study the geometry of the Zagros suture across its south segment and the Urumieh–Dokhtar magmatic arc; \cite{Adams} and \cite{Massonetal2005} studied seismicity and earthquakes in the Zagros region using geophysical methods. many other studies are based on using field geologic and seismic data by means of traditional GIS. 
+Recent studies focus mainly on regional geologic analysis of Zagros and Makran and the comparative analysis of the tectonic structure with respect to geologic evolution of the Zagros Basin. Technical approaches of these studies are diverse. For instance, \cite{Palano,Bayer,Masson} studied active crustal deformation field for the Zagros Fold-and-Thrust Belt continental collision zone by GPS measurement approach; \cite{Lemenkova2020a} used cross-sectional profiles to visualize submarine geomorphology of the Makran Trench; \cite{Motaghi} used seismic linear profiling to study the geometry of the Zagros suture across its south segment and the Urumieh–Dokhtar magmatic arc; \cite{Adams,Massonetal2005} studied seismicity and earthquakes in the Zagros region using geophysical methods. many other studies are based on using field geologic and seismic data by means of traditional GIS. 
 
-The existing studies focus on the geological analysis using existing GIS approaches, plotting stratigraphic columns and statistical graphs for geological data visualisation \cite{Mouthereau}, \cite{Koshnaw} and \cite{Suetova} and do not deal with detailed explanation of scripting techniques of the geological mapping. As a consequence, they either lack detailed technical explanation of techniques of the cartographic data visualisation \cite{Tavani} or have rather limited use of scripting approach \cite{Lemenkova2020b}. 
-
-\begin{figure}[t]\centering
-	\includegraphics[width=14cm]{Fig_01.jpg}
-\caption{Topographic map of Iran. Source: author.}\label{Fig-1}
-\end{figure}
+The existing studies focus on the geological analysis using existing GIS approaches, plotting stratigraphic columns and statistical graphs for geological data visualisation \cite{Mouthereau,Koshnaw,Suetova} and do not deal with detailed explanation of scripting techniques of the geological mapping. As a consequence, they either lack detailed technical explanation of techniques of the cartographic data visualisation \cite{Tavani} or have rather limited use of scripting approach \cite{Lemenkova2020b}. 
 
 On the contrary, this study present a combined geomorphological analysis of Zagros region by 2D and 3D modelling using an integrated approach of GMT scripting, R programming language and thematic mapping by QGIS. Utilizing a scripting approach in cartographic visualisation of the geological datasets can increase the speed and quality of data processing and help perform a complex geospatial analysis of Zagros Basin based on the multi-source thematic GIS data integrated by R and GMT modeling techniques \cite{Lemenkova2019a}. These include for instance, geomorphometric analysis of slope, aspect using DEM, geophysical mapping of 3D visualisation. 
 
@@ -144,16 +164,16 @@ The advantage of cartographic scripting also consists in flexible integration of
 
 \begin{figure}[t]\centering
 	\includegraphics[width=14cm]{Fig_02.jpg}
-\caption{3D map of Zagros. Source: author.}\label{Fig-2}
+\caption{3D model of Zagros mountains. Mapping: GMT. Source: author.}\label{Fig-2}
 \end{figure}
 
 The main purpose of this study in the Zagros Basin is to investigate the nature of its geomorphology formed in context of complex geological, lithological and tectonic setting using 2D and 3D styles of modelling by scripting laguages. A second, technical task was to determine, whether the application of technically different tools for geospatial analysis (R, GMT and QGIS) can be integrated in a project for effective visualisation and modelling of the study area by a combined approach of programming and GIS. Seven different datasets for the region of Iran including Zagros mountains provided effective material sources for presented cartographic analysis illustrating the complex geological nature of Iranian Plate and Zagros. 
 
-The actuality and novelty of this research consists in the presented integrated mapping and interpretation of the geomorphology of Iran, which is based on combination of the following datasets: topographic (GEBCO/SRTM, ETOPO), geophysical (Faye's gravity, geoid EGM-2008), geological and tectonic mapping, 2D and 3D data models, lithological maps from UNESCO datasets and DEM embedded in R library ‘raster’. The data were integrated to construct a regional project on Iran geomorphology and to develop geoinformation concepts for the Zagros area and surroundings. The integration of these unique datasets of open source high-resolution datasets acquired online resulted in new 11 maps. The study was supported and complemented by the analysis of the literature on Zagros and Iranian Plate geomorphology using recently published monographs and publications.
+The actuality and novelty of this research consists in the presented integrated mapping and interpretation of the geomorphology of Iran affected by geophysical and geodynamic setting, which is based on combination of the following datasets: topographic (GEBCO/SRTM, ETOPO), geophysical (Faye's gravity, geoid EGM-2008), geological and tectonic mapping, 2D and 3D data models, lithological maps from UNESCO datasets and DEM embedded in R library ‘raster’. The data were integrated to construct a regional project on Iran geomorphology and to develop geoinformation concepts for the Zagros area and surroundings. The integration of these unique datasets of open source high-resolution datasets acquired online resulted in new 11 maps. The study was supported and complemented by the analysis of the literature on Zagros and Iranian Plate geomorphology using recently published monographs and publications.
 
 \begin{figure}[t]\centering
 	\includegraphics[width=15cm]{Fig_03.jpg}
-\caption{Geologic map of Iran. Source: author.}\label{Fig-3}
+\caption{Geologic map of Iran. Mapping: QGIS.  Source: author.}\label{Fig-3}
 \end{figure}
 
 This paper presented an improved visualisation of the geomorphology of Zagros Fold-and-Thrust Belt by using a combination of GMT, R and QGIS open source tools enabling 2D and 3D modelling of the study area. The 2D and 3D visualisation of geomorphology of Zagros Basin, together with mapping of the geophysical fields, helps to analyse the tectonic-geologic structure of this region formed under the influence of complex interaction between the Arabian and Eurasian tectonic plates.
@@ -166,91 +186,341 @@ The Zagros fold and thrust belt is one of the world's largest petroleum province
 
 \begin{figure}[t]\centering
 	\includegraphics[width=15cm]{Fig_04.jpg}
-\caption{Lithologic map of Iran. Source: author.}\label{Fig-4}
+\caption{Lithologic map of Iran. Mapping: QGIS. Source: author.}\label{Fig-4}
 \end{figure}
 
 The structural geologic complexity of Zagros belt resulted from the geologic deformation, can be illustrated by the presence of the out-of-sequence, basement-rooted thrusts, incompetent cover strata, folds superimposed upon the pre-existing structures. It also includes a sequence of heterogeneous latest Neoproterozoic–Phanerozoic sedimentary cover 7 to 12 km thick strata overlying Precambrian crystalline basement \cite{Alavi2007}. The Zagros suture between the Arabian and Eurasian plates is directed along a line within SE Turkey through northern Iraq and southern Iran. Southwest of this suture, the continental margin of the Arabian plate is deformed by folds, thrusts, and strike-slip faults within the Zagros mountains. Nowadays, the geologic dynamics in the Zagros mountains continues with the deformation front lying roughly parallel to the Iranian shoreline of the Persian Gulf. 
 
 \begin{figure}[t]\centering
 	\includegraphics[width=14cm]{Fig_05.jpg}
-\caption{Geoid model of Iran. Source: author.}\label{Fig-5}
+\caption{Geoid model of Iran. Mapping: GMT. Source: author.}\label{Fig-5}
 \end{figure}
 
 Regional tectonic movements can also be illustrated by the gradual growth of the Turkish-Iranian Plateau which incorporates the adjacent parts of the Zagros fold-and-thrust belt \cite{Allen}. The geologic stratigraphy of Zagros fold-thrust belt has recently been updated and classified as 4 groups of rocks: 1) the lowest group (Precambrian to Devonian) which consists of several subgroups: i) the Neoproterozoic to Cambrian rocks of evaporites, siliciclastic deposits and carbonates; ii) Cambrian consisting of shallow, marine siliciclastic and carbonate rocks; iii) Ordovician, Silurian, and Devonian shales, siltstones, and volcanogenic sandstones; 2) Permian and the other Triassic rocks, composed of basal siliciclastic rocks and evaporitic carbonates; 3) shallow- and deep-water carbonates accumulated on a Neo-Tethyan continental shelf during earliest Jurassic; 4) Cretaceous siliciclastic and carbonate deposits of Zagros orogen \cite{Alavi2004}. 
 
 \begin{figure}[t]\centering
 	\includegraphics[width=15cm]{Fig_06.jpg}
-\caption{Geophysical map of free-air gravity. Source: author. }\label{Fig-6}
+\caption{Free-air gravity anomaly of Iran. Mapping: GMT. Source: author. }\label{Fig-6}
 \end{figure}
 
-A notable part of the geomorphology of Zagros is presented by the Fars arc and thrust belt, propagated under the impact of the Oman Peninsula. The oblique convergence between the Arabic plate and the Iran block is mostly extending along the Fars arc \cite{Aubourg}. The hydrocarbon production is notable for the Southwest Zagros where oil fields are concentrated. Among other, the Asmari Oligo-Miocene Formation is well-known since it contains a lot of the hydrocarbon reserves of this area \cite{Ahmadhadi}. Besides, the petroleum resources of Zagros, the southern Iran has a remarkable salt plugs segmented by salt diapiric provinces: Hormuz, Shiraz-Kazerun and Nyriz-Jahrum sub-basins, which is deeply connected with the structure and evolution of the Zagros Fold-and-Thrust Belt faulting, as described in more detailed in relevant publications \cite{Bahroudi}, \cite{Khodabakhshnezhad} and \cite{Jahanietal2009}. 
+A notable part of the geomorphology of Zagros is presented by the Fars arc and thrust belt, propagated under the impact of the Oman Peninsula. The oblique convergence between the Arabic plate and the Iran block is mostly extending along the Fars arc \cite{Aubourg}. The hydrocarbon production is notable for the Southwest Zagros where oil fields are concentrated. Among other, the Asmari Oligo-Miocene Formation is well-known since it contains a lot of the hydrocarbon reserves of this area \cite{Ahmadhadi}. Besides, the petroleum resources of Zagros, the southern Iran has a remarkable salt plugs segmented by salt diapiric provinces: Hormuz, Shiraz-Kazerun and Nyriz-Jahrum sub-basins, which is deeply connected with the structure and evolution of the Zagros Fold-and-Thrust Belt faulting, as described in more detailed in relevant publications \cite{Bahroudi,Khodabakhshnezhad,Jahanietal2009}. 
 
-The tectonics of Zagros has a spatially diverse style with a general trend of NW–SE-oriented folds and thrusts, in the Simple Folded Zone, and right-lateral strike-slip on the Main Recent Fault. The fold geometries of Zagros indicate several décollement horizons including shale units, evaporites in the Neogene, Mesozoic, Lower Palaeozoic and upper Proterozoic successions \cite{Blanc}. Detailed stratigraphy of the tectonic sub-division of Zagros Suture Zone formed since Cretaceous has been reported in existing works, e.g. see \cite{Ali2014}, \cite{Authemayou} and \cite{Ali2012}. 
+The tectonics of Zagros has a spatially diverse style with a general trend of NW–SE-oriented folds and thrusts, in the Simple Folded Zone, and right-lateral strike-slip on the Main Recent Fault. The fold geometries of Zagros indicate several décollement horizons including shale units, evaporites in the Neogene, Mesozoic, Lower Palaeozoic and upper Proterozoic successions \cite{Blanc}. Detailed stratigraphy of the tectonic sub-division of Zagros Suture Zone formed since Cretaceous has been reported in existing works \cite{Ali2014,Authemayou,Ali2012}. 
 
-The geologic stratigraphy of Zagros mirrors the major steps in its evolution that can be briefly characterized as follows. The subduction of the Paleo-Tethys induced the formation of the Zagros Basin caused by intense rifting, which then further evolved in the Jurassic period. The main rocks of the Mesozoic and Cenozoic reservoirs (carbonate, shale, and evaporite) are sourced from the continental marginal deposit between the Arabian Shield and Zagros belt, extending to over 1000 km southwards. Nowadays, such particular structural-geomorphological features and topographic fronts at the surface of Zagros, as described above, are main regions of earthquakes \cite{Berberian}. 
+The geologic stratigraphy of Zagros mirrors the major steps in its evolution that can be briefly characterized as follows. The subduction of the Paleo-Tethys induced the formation of the Zagros Basin caused by intense rifting, which then further evolved in the Jurassic period. The main rocks of the Mesozoic and Cenozoic reservoirs (carbonate, shale, and evaporite) are sourced from the continental marginal deposit between the Arabian Shield and Zagros belt, extending to over 1000 km southwards. Nowadays, such particular structural-geomorphological features and topographic fronts at the surface of Zagros are main regions of earthquakes \cite{Berberian}. 
 
 The thrusts, frontal asymmetric anticlines, escarpments and Quaternary deformation, mark topographic fronts at the relief surface of Zagros, and have vertically displaced geologic, beds which highlights deep correlation between the topographic, geomorphological and geologic structure of Zagros fold and thrust belt.
 
-\newsection {2. NEXT SECTION}
-\section{Materials and Methods}
+\newsection{3. MATERIALS AND MATHODS}
 
 The proposed study is performed in a combination of methods using open source geoinformation information tools such as console-based GMT, a graphical user interface (GUI) QGIS and programming language R. the datasets include openly available geospatila raster and vector layers as follows. 
 
 \begin{enumerate}  
-	\item The topographic map Fig. \ref{Fig-1} was based on GEBCO/SRTM grid \cite{GEBCO}, which is a high-resolution (15 arc-second) raster grid of the Earth relief. The GEBCO grid has been widely used in geoscience papers where its advantages were discussed \cite{Lemenkova2020c} and \cite{Lemenkova2020d}. GEBCO presents a combination of land topography with partially measured and partially estimated seafloor topography using remote sensing data. 
-	\item The 3D relief model of Zagros mountains Fig. \ref{Fig-2} is based on the ETOPO5 raster grid \cite{AmanteEakins}. the ETOPO presents a numerical model data of the Earth’s topography. Similar to GEBCO, it has a global coverage but with lower resolution which is useful for plotting big data sets due to the rediced computer processing time (e.g. GEBCO grid has an 11.72 Gb size for the global grid, while the ‘earth\_relief\_05m.grd’ has 10.8 Mb size which fastens the 3D modelling). The 3D modelling and applications of ETOPO1 grids have been discussed in previous works (\cite{Lemenkova2020e}, \cite{Verard}, \cite{Lemenkova2020f}, \cite{Spooner} and \cite{Lemenkova2020g}), where their effectiveness is presented. 
+	\item The topographic map Fig. \ref{Fig-1} was based on GEBCO/SRTM grid \cite{GEBCO}, which is a high-resolution (15 arc-second) raster grid of the Earth relief. The GEBCO grid has been widely used in geoscience papers where its advantages were discussed \cite{Lemenkova2020c,Lemenkova2020d}. GEBCO presents a combination of land topography with partially measured and partially estimated seafloor topography using remote sensing data. 
+	\item The 3D relief model of Zagros mountains Fig. \ref{Fig-2} is based on the ETOPO5 raster grid \cite{AmanteEakins}. the ETOPO presents a numerical model data of the Earth’s topography. Similar to GEBCO, it has a global coverage but with lower resolution which is useful for plotting big data sets due to the rediced computer processing time (e.g. GEBCO grid has an 11.72 Gb size for the global grid, while the ‘earth\_relief\_05m.grd’ has 10.8 Mb size which fastens the 3D modelling). The 3D modelling and applications of ETOPO1 grids have been discussed in previous works \citep{Lemenkova2020e,Verard,Lemenkova2020f,Spooner,Lemenkova2020g}, where their effectiveness is presented. 
 	\item The geologic mapping Fig. \ref{Fig-3} was mapped using the datasets of UNESCO which includes the petroleum geology, geologic provinces, and oil and gas fields of Iran. This dataset is a cartographic part of the worldwide series released by the U.S.G.S. World Energy Project obtained in shape (.shp) file ArcGIS format and the processed in the open source QGIS.
 	\item Surficial geology of Iran Fig. \ref{Fig-4} is mapped using the datasets of UNESCO which includes the petroleum geology, geologic provinces, and oil and gas fields released by the U.S.G.S. World Energy Project obtained in vector shape (.shp).
 	\item The geoid gravitational model of Iran Fig. \ref{Fig-5} is based on using the EGM-2008 grid \cite{Pavlis} which has been used in the publications on geophysics and geology \cite{Lemenkova2020h}.
-	\item The free-air gravity anomaly Fig. \ref{Fig-6} is based on the open source geophysical datasets by \cite{Sandwell1997} and \cite{Sandwell2014} and represents the gravity after a free-air correction applied for the elevation at which a measurement is made (that is, the mean sea level). The gravity modelling has been presented in various publications \cite{Lemenkova2020i} and \cite{Djamour} with techniques of visualisation and theoretical basis explained with reference to the geology. The geophysical fieldwork often uses magnetic, gravimetric and deep crustal seismic (reflection and refraction/wide-angle) surveys which provide the necessary data base for detailed mapping \cite{Gohl2006a}, \cite{Gohl2006b}, \cite{Kuhn}, but this study is fully based on the computer-based data processing using shell scripting cartographic techniques for applied geology.
-	\item The five geomorphometric maps (Fig. \ref{Fig-7}, Fig. \ref{Fig-8}, Fig. \ref{Fig-9}, Fig. \ref{Fig-10} and Fig. \ref{Fig-11}) are based on the DEM embedded in RStudio environment \cite{RStudio} of R programming language \cite{RCoreTeam} by library ‘raster’ which was called by the country name using the following code: ‘alt = getData("alt", country = "Iran", path = tempdir())’. The dataset was then uploaded to the RStudio project and used for further processing: modelling slope, aspect, hillshade and terrain relief of Iran using libraries ‘raster’ \cite{Hijmans} and ‘tmap’ \cite{Tennekes} which have their syntax along with common general syntax of R presented in geoscience publications \cite{Lemenkova2019b} and \cite{Lemenkova202007}.  
+	\item The free-air gravity anomaly Fig. \ref{Fig-6} is based on the open source geophysical datasets \cite{Sandwell1997,Sandwell2014} and represents the gravity after a free-air correction applied for the elevation at which a measurement is made (that is, the mean sea level). The gravity modelling has been presented in various publications \cite{Lemenkova2020i} and \cite{Djamour} with techniques of visualisation and theoretical basis explained with reference to the geology. The geophysical fieldwork often uses magnetic, gravimetric and deep crustal seismic (reflection and refraction/wide-angle) surveys which provide the necessary database for detailed mapping \cite{Gohl2006a,Gohl2006b,Kuhn}, but this study is fully based on the computer-based data processing using shell scripting cartographic techniques for applied geology.
+	\item The five geomorphometric maps (Fig. \ref{Fig-7}, Fig. \ref{Fig-8}, Fig. \ref{Fig-9}, Fig. \ref{Fig-10} and Fig. \ref{Fig-11}) are based on the DEM embedded in RStudio environment \cite{RStudio} of R programming language \cite{RCoreTeam} by library ‘raster’ which was called by the country name using the following code: ‘alt = getData("alt", country = "Iran", path = tempdir())’. The dataset was then uploaded to the RStudio project and used for further processing: modelling slope, aspect, hillshade and terrain relief of Iran using libraries ‘raster’ \cite{Hijmans} and ‘tmap’ \cite{Tennekes} which have their syntax along with common general syntax of R presented in geoscience publications \cite{Lemenkova2019b,Lemenkova202007}.  
 \end{enumerate}
 
-\newsection {3. SECTION WITH SUBSECTIONS}
+\newsubsection {Mapping by GMT}
 
-\newpar In the case of a well-developed article structure, subsections should be used to preserve readability.
+The maps in GMT are performed in several stages using several GMT modules \cite{Wessel2019} using occasional data processing (converting, projection, retrieving data information) by GDAL \cite{GDAL}. The general steps are given as follows. Image capture and visualisation by the code \ref{List1}: 
 
-\newsubsection {3.1. First subsection}
+\lstset{caption={Listing for GMT script for converting the formats and visualising raster images in Fig. \ref{Fig-5}},label=List1}
+\begin{lstlisting}[frame=single]
+gmt grdconvert n00e45/w001001.adf geoid_IR.grd
+gmt grdconvert n00e00/w001001.adf geoid_IQ.grd
+gdalinfo geoid_IR.grd -stats
+gdalinfo geoid_IQ.grd -stats
+gmt makecpt -Chaxby -T-100/50/1 > colors.cpt
+% initiating the file
+ps=Geoid_IR.ps
+gmt grdimage geoid_IR.grd -Chaxby -R43/65/24/40 -JM6.5i 
+-P -I+a15+ne0.75 -Xc -K > $ps
+gmt grdimage geoid_IQ.grd -Ccolors.cpt -R -J -P 
+-I+a15+ne0.75 -Xc -O -K >> $ps
+\end{lstlisting}
 
-\newpar Multilevel numbering should precede the title of each subsequent subsection.
+Here the topographic image was uploaded to GMT and visualised using the coordinate extent by using the ‘grdimage’ module. Adding cartographic grid by the code \ref{List2}: 
 
-\newpar Equations should be placed within the text (1). They should be centered and numbered successively with Arabic numerals (minor non-referenced expressions might be not numbered). The equation’s number should be positioned in parentheses right justified at the line of the equation:
+\lstset{caption={Listing for GMT script plotting cartographic grid on the image},label=List2}
+\begin{lstlisting}[frame=single]
+gmt psbasemap -R -J \
+    -Bpxg2f1a2 -Bpyg2f1a2 -Bsxg2 -Bsyg1 \
+    --MAP_TITLE_OFFSET=1.0c \
+    --MAP_ANNOT_OFFSET=0.1c \
+    --FONT_TITLE=12p,25,black \
+    --FONT_ANNOT_PRIMARY=7p,25,black \
+    --FONT_LABEL=8p,25,black \
+    --MAP_FRAME_AXES=WEsN \
+    -B+t"Geoid gravitational model of Iran" \
+    -Lx14.0c/-2.5c+c318/-57+w300k+l"Mercator projection. 
+    Scale: km"+f \
+    -UBL/0p/-70p -O -K >> $ps
+\end{lstlisting}
 
-% sample equation
+using the ‘psbasemap’ module of GMT. Text annotations using the code in \ref{List3}: 
 
-\begin{equation}
-   \label{simple_equation}
-   \alpha = \sqrt{ \beta }
-\end{equation}
+\lstset{caption={Listing for GMT script for plotting textual annotations on the image},label=List3}
+\begin{lstlisting}[frame=single]
+gmt pstext -R -J -N -O -K -F+jTL+f10p,26,blue1+jLB+a-80 
+>> $ps << EOF 56.7 26.0 Hormuz EOF
+\end{lstlisting}
 
-\newsubsection {3.2. Second subsection}
+, where the ‘56.7 26.0’ signify the longitude/latitude coordinates of the location and the ‘+a-80’ flag means the rotation of the text on the map. The insert globe map was added on the main image using the code \ref{List4}: 
 
-\newpar If you use the \LaTeX template, you should start sections, subsections and subsubsections with the appropriate command, defined on the beginning of the file. Each subsequent paragraph should begin with the \textit{"newpar"} command. Similarly, for references use \textit{"newref"}, while for figure and table captions - \textit{"figtab"}.
+\lstset{caption={Listing for GMT script inserting a small globe map on the image in Fig \ref{Fig-1}},label=List4}
+\begin{lstlisting}[frame=single]
+gmt pscoast -Rg -JG54/32N/$w -Da -Glightgoldenrod1 -A5000 
+-Bga -Wfaint -EIR+gred -Sdodgerblue 
+-O -K -X$x0 -Y$y0 >> $ps
+\end{lstlisting} 
 
-\newsubsubsection {3.2.1. First subsubsection}
+The similar logic of the modular-based cartographic plotting has been applied for plotting the maps in Fig. \ref{Fig-1}, Fig. \ref{Fig-2}, Fig. \ref{Fig-5} and Fig. \ref{Fig-6}. The resulting files in PostScript format was then converted into graphiscal format by the ‘psconvert’ module using the code \ref{List5}: 
 
-\newpar If the next level is necessary – the next level can be used. 
+\lstset{caption={Listing for GMT script visualizing the image},label=List5}
+\begin{lstlisting}[frame=single]
+gmt psconvert Topo\_IR.ps -A0.2c -E720 -Tj -Z
+\end{lstlisting}
 
-\newsubsubsection {3.2.2. Second subsubsection}
+The 3D modelling was performed using the code in \ref{List6}:
 
-\newpar Consistently use multi-level numbering. 
+\lstset{caption={Listing for GMT script visualising the 3D image in Fig. \ref{Fig-2}}, label=List6}
+\begin{lstlisting}[frame=single]
+gmt grdcut earth_relief_05m.grd -R43/65/24/40 -Gir_relief.nc
+gmt makecpt -Cturbo.cpt -V -T-3487/5149 > myocean.cpt
+ps=IR3D165.ps
+gmt grdcontour earth_relief_05m.grd -JM10c -R43/65/24/40 \
+    -p165/30 -C750 -B4/4NESW -Gd3c -Y3c \
+    -U/-0.5c/-1c/"Data: World ETOPO 5 arc min grid" \
+    -P -K > $ps
+gmt pstext -R -J -N -O -K \
+-F+jTL+f9p,25,blue1+jLB+a-50 >> $ps << EOF
+50.0 28.5 Persian Gulf
+EOF
+gmt pstext -R -J -N -O -K \
+-F+jTL+f10p,25,brown+jLB+a-47 -Gwhite@30 >> $ps << EOF
+52.0 30.5 Zagros Mts
+EOF
+gmt pscoast -R43/65/24/40 -J -p165/30 -P \
+    -Ia/thinner,blue -Na -W0.1p -Df -O -K >> $ps
+gmt psscale -Dg37.5/24+w8.0c/0.4c+v+o0.0/0.5c+ml \
+    -R -J -Cmyocean.cpt \
+    --FONT_LABEL=8p,Helvetica,dimgray \
+    --FONT_ANNOT_PRIMARY=7p,Helvetica,black \
+    --MAP_ANNOT_OFFSET=0.1c \
+    -Bg500f50a500+l"Color scale legend: depth and height 
+    elevations (m)." \
+    -I0.2 -By+lm -O -K >> $ps
+gmt grdview ir_relief.nc -J -R -JZ3c -Cmyocean.cpt \
+    -p165/30 -Qsm -N-3500+glightgray \
+    -Wm0.07p -Wf0.1p,red \
+    -B4/4/2000:"Bathymetry and topography (m)":ESwZ -S5 
+    -Y5.0c \
+    --FONT_LABEL=8p,Helvetica,darkblue \
+    --FONT_ANNOT_PRIMARY=7p,Helvetica,black \
+    --MAP_FRAME_PEN=black -O -K >> $ps
+   gmt pstext -R -J -N -O -K \
+-F+jTL+f9p,25,blue1+jLB+a-53 >> $ps << EOF
+49.0 32.0 Persian Gulf
+EOF
+gmt pstext -R -J -N -O -K \
+-F+jTL+f10p,25,white+jLB+a-47 >> $ps << EOF
+48.0 36.5 Z a g r o s  M o u n t a i n s
+EOF
+gmt pstext -R -J -N -O -K \
+-F+jTL+f9p,26,white+jLB >> $ps << EOF
+59.7 25.0 Gulf of Oman
+EOF
+    
+# Add GMT logo
+gmt logo -Dx10.5/-5.5+o0.0c/-0.5c+w2c -O -K >> $ps
 
-\newsection {3. CONCLUSIONS}
+# Add title
+gmt pstext -R0/10/0/10 -Jx1 -X-0.8c -Y0.0c -N -O -K \
+-F+f10p,Helvetica,black+jLB >> $ps << EOF
+0.0 8.2 Zagros Mountains: 3D topographic mesh model
+0.0 7.7 Base map: 2D relief contour plot
+0.0 7.2 Region: Iran
+EOF
 
-\newpar Each contribution submitted to publication in our Journal should have original conclusions and, like in the introduction, the first paragraph should be written with no ident.
+gmt pstext -R0/10/0/10 -Jx1 -X0.0c -Y0.0c -N -O\
+    -F+f8p,Helvetica,black+jLB >> $ps << EOF
+7.0 7.0 Perspective view, azimuth rotation: 165/30\232
+EOF
 
-\vspace{12pt}
+# Convert to image file by GhostScript
+gmt psconvert IR3D165.ps -A1.2c -E720 -Tj -P -Z
+\end{lstlisting}
+
+\newsubsection{Cartographic visualisation by QGIS}
+
+The cartographic visualisation by QGIS was used for mapping Fig. \ref{Fig-3} and Fig. \ref{Fig-4} showing geologic and lithologic maps of Iran visualizing its spatial variability and complexity of structure. The maps were plotted using the general approach of Geographic Information Systems (GIS) by the Graphical User Interface (GUI) which contains a user menu with commands well known and applied in traditional cartography, e.g. ArcGIS, QGIS and similar GIS \cite{Klaucoetal2013,Lemenkovaetal2012,Suetova,Lemenkova202124}. 
+
+\newsubsection{Plotting by R language}
+
+The maps in Figures \ref{Fig-7}, \ref{Fig-8}, \ref{Fig-9}, \ref{Fig-10} and \ref{Fig-11} are plotted using R language in RStudio integrated development environment, which combines a console for coding and a graphical menu for visualisation of plots. The main approach by ‘raster’ package of R consists in visualising geomorphometric models using DEM. The data were captured using the following code \ref{List7}: 
+
+\lstset{caption={Listing for R script for data capture and uploading necessary packages},label=List7}
+\begin{lstlisting}[frame=single]
+library(sp)
+library(raster)
+library(ncdf4)
+library(RColorBrewer)
+library(sf)
+library(tmap)
+alt = getData("alt", country = "Iran", path = tempdir())
+\end{lstlisting}
+
+To extract the relief characteristics of the Iranian Plate, the ‘raster’ package of R was used. The results were visualised as several thematic maps Figures \ref{Fig-7}, \ref{Fig-8}, \ref{Fig-9}, \ref{Fig-10} and \ref{Fig-11} presenting a series of morphometric analyses: 1) slope analysis presenting the default visualisation by ‘raster’ package Fig. \ref{Fig-7} and adjusted in ‘tmap’ package Fig. \ref{Fig-8}, 2) aspect maps modelled in ‘raster’ package and visualised in ‘tmap’ package Fig. \ref{Fig-9}, 3) hill shade map modelled in ‘raster’ package and visualised in ‘tmap’ package Fig. \ref{Fig-10}, 4) DEM elevation map modelled in ‘raster’ package and visualised in ‘tmap’ package Fig. \ref{Fig-11}.
+
+The ‘raster’ package has a straightforward syntax and rather simplified manner of cartographic data processing. The code for modelling is as follows: slope = terrain(alt, opt = "slope"), where the ‘opt’ function was changed for ‘aspect’ and ‘alt’ aimed to visualize aspect and elevation. The hillshade was visualised by the code \ref{List8}:
+
+\lstset{caption={Listing for R code visualizing the geomorphological parameters and saving the output data},label=List8}
+\begin{lstlisting}[frame=single]
+slope = terrain(alt, opt = "slope")
+plot(slope)
+aspect = terrain(alt, opt = "aspect")
+plot(aspect)
+hill = hillShade(slope, aspect, angle = 40, 
+direction = 270)
+plot(hill)
+plot(alt)
+tmap_save(alt, "Iran_Slope.jpg", dpi = 300, height = 10)
+\end{lstlisting}
+
+The default visualisation of ‘raster’ package is illustrated in Fig. \ref{Fig-7} that  shows slope map of Iran. After the initial models were created, the data for each map in Figures \ref{Fig-8}, \ref{Fig-9}, \ref{Fig-10} and \ref{Fig-11} were imported to the ‘tmap’ package where the cartographic processing is more sophisticated. Thus, for instance, the cartographic elements are adjusted using special flags in the options of the function in a package. 
+
+An example of the code for the cartographic adjustments is as follows in Listing \ref{List9}: 
+\lstset{language=R,caption={Listing of R language visualising the geographic map on the image in Fig. \ref{Fig-8}},label=List9}
+\begin{lstlisting}[frame=single]
+# tmaptools::palette_explorer()
+tmap_mode("plot")
+map1 <-
+    tmap_style("watercolor") +
+    tm_shape(slope, name = "Slope", title = "Slope") +
+    tm_raster(
+        title = "Slope (0\u00B0-90\u00B0)",
+        palette = "-Set1",
+        style = "quantile", n = 10,
+        breaks = c(5, 10, 20, 30, 40, 50, 60, 70, 80, 90),
+        legend.show = T,
+        legend.hist = T,
+        legend.hist.z=0,
+        ) +
+    tm_scale_bar(
+        width = 0.25,
+        text.size = 0.8,
+        text.color = "black",
+        color.dark = "black",
+        color.light = "white",
+        position=c("center", "bottom"),
+        lwd = 1) +
+    tm_compass(
+        type = "radar", position=c("right", "top"), 
+        size = 10.0) +
+    tm_layout(scale = .8,
+        main.title = "Slope terrain analysis <...> R",
+        main.title.position = "center",
+        main.title.color = "black",
+        main.title.size = 1.0,
+        title = "Slope (0\u00B0-90\u00B0)",
+        title.color = "black",
+        title.size = 1.0,
+        title.position = c("left", "top"),
+        panel.labels = c("R: tmap, raster, sp, sf"),
+        panel.label.color = "darkslateblue",
+        panel.label.size = 1.0,
+        legend.position = c("left","bottom"),
+        legend.bg.color = "grey90",
+        legend.bg.alpha = .2,
+        legend.outside = FALSE,
+        legend.width = .3,
+        legend.height = .5,
+        legend.hist.height = .2,
+        legend.title.size = 0.9,
+        legend.text.size = 0.8,
+        inner.margins = 0) +
+    tm_graticules(
+        ticks = TRUE,
+        lines = TRUE,
+        labels.rot = c(15, 15),
+        col = "azure3", lwd = 1,
+        labels.size = 1.0)
+# plot map
+map1
+tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
+\end{lstlisting}
+
+The 'tmap' functions 'tm\_scale\_bar', 'tm\_raster' and 'tm\_graticules' were used for plotting self-explaining cartographic elements. The main adjustments f the graphical output were set ip in the 'tm\_layout' function where the following elements were visualised (colour, size, locations of the elements on the map): legend, panel annotations, title, labels. 
+
+The relationship between the geomorphological elements (slope, aspect, elevation), 3D topographic model and geologic structure of Iran Fig. \ref{Fig-3} and Fig. \ref{Fig-4} was used to analyse the variations of the homogeneity of the relief, i.e., if the area has an increasingly higher variations in slope and steepness in Zagros Mountains or the dominating landforms are the stable low-level lowlands mostly located in the basin of tributaries of Tigris River in the south-western part of Iran. Then the histograms for each of the morphometric maps were created using the 'legend.hist = T' option in the 'tm\_raster' function based on the automatically analysed data distribution. 
+
+
+\newsection{5. RESULTS AND DISCUSSION}
+
+The comparisons of the topographic, geological, geomorphological and geophysical maps as well as the values of general morphometric elements (slope, aspect, hillshade and elevation) with the relief map revealed that the regions of the Zagros fold and thrust zones often corresponds to differing morphometric properties. 
+	
+\begin{figure}[H]\centering
+	\includegraphics[width=11cm]{Fig_07.jpg}
+\caption{R ‘raster’ based geomorphometric model of elevation. Source: author.}\label{Fig-7}
+\end{figure}
+
+For instance, higher values of Elburz and Zagros ranges, selected ranges of Kopet Dag and Makran slopes Fig. \ref{Fig-1} shown as bright red colours in Fig. \ref{Fig-8} are associated with the extreme steep slopes, while major deserts of Iran, such as Dasht-e Kavir, Dasht-e Lut and Great Salt Desert Fig. \ref{Fig-1} are mostly associated with the slopes having lowest steepness (grey colours in Fig. \ref{Fig-8}).
+
+The three distinct Fold Belts shown in Fig. \ref{Fig-3} – the Kopet Dag, Elburz and Zagros – have the dense locality of major faults (shown red in Fig. \ref{Fig-3}) that are associated with the geologic formation controlled by the tectonic constraints on the evolution (e.g. salt‐bearing Neogene sediments, are folded and cut by faults in Alborz Mountains), as it is also reported in the existing works \cite{Baikpour,Burberry}. Variations in the fold patterns, geologic characteristics and de- formation style can be seen by comparison of the Fig. \ref{Fig-2} and Fig. \ref{Fig-4} showing the three-dimensional and plain map visualisations of the topography and geology, respectively. 
+
+The variations in the relief changing according to various areas of Zagros belt are also reported in previous publications, e.g. \cite{Casciello,Jimenez,Hessami}. Geologic structure of Zagros fold and thrust belt, including visualised geologic provinces, major faults, surficial lithologic boundaries, and bedrock geology also affects both the local shape of geomorphic landforms of Iran and the slope steepness. 
+
+\begin{figure}[H]\centering
+	\includegraphics[width=10cm]{Fig_08.jpg}
+\caption{Slope terrain model of Iran. Mapping: R.  Source: author.}\label{Fig-8}
+\end{figure}
+
+\begin{figure}[H]\centering
+	\includegraphics[width=10cm]{Fig_09.jpg}
+\caption{Aspect terrain model of Iran. Mapping: R. Source: author.}\label{Fig-9}
+\end{figure}
+
+Geophysical discontinuities Fig. \ref{Fig-5} and free-air gravity anomalies Fig. \ref{Fig-6} were demonstrated by the two GMT-based maps showing general increase of geoid undulation values in SE-NW direction. That is, the Indian geopotential low-level geoid anomalies can be clearly seen Fig. \ref{Fig-5} as low values (below 60 m, coloured blue to deep blue in Fig. \ref{Fig-5} while Zagros fol and thrust belt are mostly covered by the slightly positive values (above -10 to 5: yellow to orange colours in south-east Zagros area), followed by the strongly positive values of above 5 m (bright red colours in Fig. \ref{Fig-5}) which shows general increase of geoid heights along the Zagros mountains chain. The basin of Persian Gulf demonstrates mostly negative values from -65 to -40 m (light blue colours in Fig. \ref{Fig-5}) with slightly negative values in the Tigris and Euphrates rivers (aquamarine colours, from -40 to -20 m). The general gravity properties such as the free-air gravity Fig. \ref{Fig-6} also correspond to the geologic rock types and lithology of the region by the comparison of Fig. \ref{Fig-6} and 4 where the isolines of gravity correspond to the lithological rock types distribution, which points at the strong correlation between the geophysical and geological setting that can be explained by the rock density, porosity and structure. 
+
+\begin{figure}[H]\centering
+	\includegraphics[width=10cm]{Fig_10.jpg}
+\caption{Hillshade terrain model of Iran. Mapping: R. Source: author. }\label{Fig-10}
+\end{figure}
+
+The geomorphometry of Iran in general and the Zagros mountain as its particular, most remarkable landform and similar relief features (e.g. Elburz, Kopet Dag mountain chains) is visualised in the set of figures plotted in R: the evaluation of slope Fig. \ref{Fig-7} and Fig. \ref{Fig-8}, aspect orientation of slopes Fig. \ref{Fig-9}, hillshade with artificial illumination highlighting the relief of the country (Fig. \ref{Fig-10}) and DEM based visualisation of the geomorphological properties better highlighting geologic structure of Zagros and surrounding relief (Fig. \ref{Fig-11}). These models were plotted to illustrate the complex landforms of Iran along Zagros forl and thrust belt and in other regions of country. 
+
+The wide river valleys (e.g. tributaries of Tigris River) have gentler, almost flat relief and low-leveled slopes, and have rather smoothed, gentle slopes, while mountainous areas have steeper gradients, suggesting that geologic evolution of the Zagros fold and thrust belt formation has created a complex alteration between the large and gentle landforms. At the same time, local development of flattened relief in Dasht-e Kavir, Dasht-e Lut and Great Salt Desert is also evident by the comparative analysis between the maps in Fig. \ref{Fig-1} with Fig. \ref{Fig-7} and Fig. \ref{Fig-8} (slope), Fig. \ref{Fig-9} (aspect), Fig. \ref{Fig-10} and Fig. \ref{Fig-11} (relief).
+
+\begin{figure}[H]\centering
+	\includegraphics[width=11cm]{Fig_11.jpg}
+\caption{DEM elevation model of Iran. Source: author.}\label{Fig-11}
+\end{figure}
+
+\newsection {6. CONCLUSIONS}
+
+Using scripting technical approach by a combination of GMT and R supported by the GIS mapping in QGIS, the multi-source datasets combined from the open data sources on the Iran have been compiled and visualised in conjunction with new tools of cartographic data analysis with aim at new interpretations of the geomorphology, geology and topography of Iran. Thus, this paper provides a better cartographic picture of the geologic structures, geophysical anomaly fields, 2D and 3D models and tectonic deformation lineaments of Iran with a particular focus on Zagros mountains as major geomorphological structure of the country. Besides Zagros mountains, the Elburz and Kopet Dag belts were visualised and analysed together with Dasht-e Kavir, Dasht-e Lut and Great Salt Desert, as the significants geomorphological structures of Iran. 
+
+These geomorphological zones were analysed by means of R geomorphometric analysis as well as quantitative maps were presented for the slope and aspect maps showing histograms if data frequency for each class of the slope steepness and aspect orientation by the compass direction (major West, East, South and North and the derivative ones) which divide the country into the zones with different geomorphological and topographic patterns well correlating with geophysical setting, geological and lithological structure. These variations mirror the different geological structural characteristics developing along the Zagros belt during the tectonic plates collision (Arabian and Eurasian) as a result of the geologic evolution of the region. 
+
+The automatization in cartographic analysis has been the point of discussion in various papers \cite{Schenke,Lemenkova2014d,Lemenkova2019c,Gauger} and widely used recently along with rapid progress of the machine learning and development of the scripting languages. The presented integrated combination of various scripting mapping tools in one project, as demonstrated in this paper, shown the effectiveness of the computer-based methods in cartographic workflow with a case of the geomorphology of Iran with a special focus on Zagros. Thus, this study hybridizes the traditional mapping presented by the QGIS and the scripting cartographic method of GMT and two special packages of R ('raster' and 'tmap') used to visualzie 2D and 3D geomorphological, topographic,  geophysical and geological maps of Iran. 
+
+The importance of the study area is explained by the unique geologic and geomorphological structure of Zagros fold and thrust belt that contains vast mineral resources of the country \cite{Sepehr,Regard,Motaghi2017,Saura} and at the same time is subject to seismic activity and earthquakes, as reported in various papers \cite{Paul,Nissen,Yamini,Tavakoli,Talebian}. Besides, the Zagros mountain chain significantly influences the surrounding nature, environmental and climate conditions of Iran as a major distinct geomorphological landmark of the country controlling the habitats, vegetation and landscape distribution, and thus serving as a key geomorphological structure of Iran. 
 
 % acknowledgments - optional
 
-{\bf Acknowledgements.} Acknowledgements are optional. Place acknowledgements in a separate section at the end of the article and do not, therefore, include them on the title page, as a footnote to the title or otherwise.
+{\bf Acknowledgements.} The author thanks the reviewers for reading the manuscript, comments and suggestions that improved the initial version of the text.
 
 % references
 
 \newsection {REFERENCES}
 
 \bibliography{Iran.bib}
-\nocite{*}
+%\nocite{*}
 
 % -----------------------------------------------------------------------------------------------
 % end of the AUTHOR issues
