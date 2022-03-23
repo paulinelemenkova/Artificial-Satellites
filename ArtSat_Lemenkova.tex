@@ -22,11 +22,11 @@
 \lstdefinestyle{customc}{
   belowcaptionskip=1\baselineskip,
   breaklines=true,
+  basicstyle=\tiny,
   frame=L,
   xleftmargin=\parindent,
   language=C,
   showstringspaces=false,
-  basicstyle=\footnotesize\ttfamily,
   keywordstyle=\bfseries\colour{green!40!black},
   commentstyle=\itshape\colour{purple!40!black},
   identifierstyle=\colour{blue},
@@ -232,7 +232,7 @@ gmt grdimage geoid_IQ.grd -Ccolors.cpt -R -J -P
 -I+a15+ne0.75 -Xc -O -K >> $ps
 \end{lstlisting}
 
-Here the topographic image was uploaded to GMT and visualised using the coordinate extent by using the ‘grdimage’ module. Adding cartographic grid by the code \ref{List2} using the ‘psbasemap’ module of GMT: 
+\newpar Here the topographic image was uploaded to GMT and visualised using the coordinate extent by using the ‘grdimage’ module. Adding cartographic grid by the code \ref{List2} using the ‘psbasemap’ module of GMT: 
 
 \lstset{caption={Listing for GMT script plotting cartographic grid on the image},label=List2}
 \begin{lstlisting}[frame=single]
@@ -250,7 +250,7 @@ gmt psbasemap -R -J \
     -UBL/0p/-70p -O -K >> $ps
 \end{lstlisting}
 
-Text annotations using the code in \ref{List3}: 
+\newpar Text annotations using the code in \ref{List3}, where the ‘56.7 26.0’ signify the longitude/latitude coordinates of the location and the ‘+a-80’ flag means the rotation of the text on the map. : 
 
 \lstset{caption={Listing for GMT script for plotting textual annotations on the image},label=List3}
 \begin{lstlisting}[frame=single]
@@ -258,7 +258,7 @@ gmt pstext -R -J -N -O -K -F+jTL+f10p,26,blue1+jLB+a-80
 >> $ps << EOF 56.7 26.0 Hormuz EOF
 \end{lstlisting}
 
-, where the ‘56.7 26.0’ signify the longitude/latitude coordinates of the location and the ‘+a-80’ flag means the rotation of the text on the map. The insert globe map was added on the main image using the code \ref{List4}: 
+\newpar The insert globe map was added on the main image using the code \ref{List4}: 
 
 \lstset{caption={Listing for GMT script inserting a small globe map on the image in Fig \ref{Fig-1}},label=List4}
 \begin{lstlisting}[frame=single]
@@ -267,14 +267,14 @@ gmt pscoast -Rg -JG54/32N/$w -Da -Glightgoldenrod1 -A5000
 -O -K -X$x0 -Y$y0 >> $ps
 \end{lstlisting} 
 
-The similar logic of the modular-based cartographic plotting has been applied for plotting the maps in Fig. \ref{Fig-1}, Fig. \ref{Fig-2}, Fig. \ref{Fig-5} and Fig. \ref{Fig-6}. The resulting files in PostScript format was then converted into graphiscal format by the ‘psconvert’ module using the code \ref{List5}: 
+\newpar The similar logic of the modular-based cartographic plotting has been applied for plotting the maps in Fig. \ref{Fig-1}, Fig. \ref{Fig-2}, Fig. \ref{Fig-5} and Fig. \ref{Fig-6}. The resulting files in PostScript format was then converted into graphiscal format by the ‘psconvert’ module using the code \ref{List5}: 
 
 \lstset{caption={Listing for GMT script visualizing the image},label=List5}
 \begin{lstlisting}[frame=single]
 gmt psconvert Topo\_IR.ps -A0.2c -E720 -Tj -Z
 \end{lstlisting}
 
-The 3D modelling was performed using the code in \ref{List6}:
+\newpar The 3D modelling was performed using the code in \ref{List6}:
 
 \lstset{caption={Listing for GMT script visualising the 3D image in Fig. \ref{Fig-2}}, label=List6}
 \begin{lstlisting}[frame=single]
@@ -322,11 +322,9 @@ EOF
 gmt pstext -R -J -N -O -K \
 -F+jTL+f9p,26,white+jLB >> $ps << EOF
 59.7 25.0 Gulf of Oman
-EOF
-    
+EOF  
 # Add GMT logo
 gmt logo -Dx10.5/-5.5+o0.0c/-0.5c+w2c -O -K >> $ps
-
 # Add title
 gmt pstext -R0/10/0/10 -Jx1 -X-0.8c -Y0.0c -N -O -K \
 -F+f10p,Helvetica,black+jLB >> $ps << EOF
@@ -334,28 +332,33 @@ gmt pstext -R0/10/0/10 -Jx1 -X-0.8c -Y0.0c -N -O -K \
 0.0 7.7 Base map: 2D relief contour plot
 0.0 7.2 Region: Iran
 EOF
-
 gmt pstext -R0/10/0/10 -Jx1 -X0.0c -Y0.0c -N -O\
     -F+f8p,Helvetica,black+jLB >> $ps << EOF
 7.0 7.0 Perspective view, azimuth rotation: 165/30\232
 EOF
-
 # Convert to image file by GhostScript
 gmt psconvert IR3D165.ps -A1.2c -E720 -Tj -P -Z
 \end{lstlisting}
 
+\newsubsection {3.2. Cartographic visualisation by QGIS}
 
+\newpar The cartographic visualisation by QGIS was used for mapping Fig. \ref{Fig-3} and Fig. \ref{Fig-4} showing geologic and lithologic maps of Iran visualizing its spatial variability and complexity of structure. The maps were plotted using the general approach of Geographic Information Systems (GIS) by the Graphical User Interface (GUI) which contains a user menu with commands well known and applied in traditional cartography, e.g. ArcGIS, QGIS and similar GIS \cite{Klaucoetal2013,Lemenkovaetal2012,Suetova,Lemenkova202124}. 
 
+\newsubsection {3.3. Plotting by R language}
 
+\newpar The maps in Figures \ref{Fig-7}, \ref{Fig-8}, \ref{Fig-9}, \ref{Fig-10} and \ref{Fig-11} are plotted using R language in RStudio integrated development environment, which combines a console for coding and a graphical menu for visualisation of plots. The main approach by ‘raster’ package of R consists in visualising geomorphometric models using DEM. The data were captured using the following code \ref{List7}: 
 
+\lstset{caption={Listing for R script for data capture and uploading necessary packages},label=List7}
+\begin{lstlisting}[frame=single]
+library(sp)
+library(raster)
+library(ncdf4)
+library(RColorBrewer)
+library(sf)
+library(tmap)
+alt = getData("alt", country = "Iran", path = tempdir())
+\end{lstlisting}
 
-
-\newpar Equations should be placed within the text (1). They should be centered and numbered successively with Arabic numerals (minor non-referenced expressions might be not numbered). The equation’s number should be positioned in parentheses right justified at the line of the equation:
-
-
-\newsubsection {3.2. Second subsection}
-
-\newpar If you use the \LaTeX template, you should start sections, subsections and subsubsections with the appropriate command, defined on the beginning of the file. Each subsequent paragraph should begin with the \textit{"newpar"} command. Similarly, for references use \textit{"newref"}, while for figure and table captions - \textit{"figtab"}.
 
 \pagebreak % if necessary, use the command to break the page
 
