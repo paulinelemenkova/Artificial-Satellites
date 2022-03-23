@@ -16,13 +16,16 @@
 \usepackage{cite}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{color}
+\usepackage{float}
 
 \usepackage{graphicx}	
 \usepackage{listings}   
 \lstdefinestyle{customc}{
   belowcaptionskip=1\baselineskip,
   breaklines=true,
-  basicstyle=\tiny,
+  basicstyle=\ttfamily\tiny,
   frame=L,
   xleftmargin=\parindent,
   language=C,
@@ -32,6 +35,7 @@
   identifierstyle=\colour{blue},
   stringstyle=\colour{orange},
 }	
+
 
 \usepackage{array}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{2pt}}m{#1}}
@@ -144,12 +148,14 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \newpar Variations in the geomorphic structures of the Zagros fold and thrust belt system are a significant indicator on the distribution of mineral resources, since Zagros region belongs to the key basins of the oil and gas reserves in the Middle East, e.g. with prolific petroleum plays in the Zagros Foreland \cite{Bosold}. Spatial geological structure of the Zagros Basin differs from SW to NE dividing the basin into the three major zones: foredeep, simply folded, and thrust fault. Spatial difference sin geological structure are reflected in the distribution of mineral deposits: the oil fields are mostly located in the foredeep zone, gas fields – in the simply folded zone and only few fields are in the thrust fault zone. The belt of prolific oil and gas fields is bounded on the NE by the high Zagros mountains and on the south and west by the outcropping crystalline basement of the Arabian Shield \cite{Beydoun}. 
 
+\begin{figure}[H]
 \begin{center}
-\includegraphics[height=14.0cm]{Fig_01.jpg}
+\includegraphics[height=12.0cm]{Fig_01.jpg}
 
 \vspace{6pt}	
 \figtab {\bf Figure 1.} Topographic map of Iran. Mapping: GMT. Source: author. 
 \end{center}
+\end{figure}
 
 \newpar The Zagros orogenic belt of Iran consists, from NE to SW, of the parallel tectonic subdivisions with the increased intensity of deformation NE from the Persian Gulf-Mesopotamian basin: 1) the Urumieh-Dokhtar Magmatic Assemblage; 2)  the Sanandaj-Sirjan Zone; 3) the Zagros Simply Folded Belt \cite{Alavi1994}. Enhanced understanding of the geologic and tectonic processes taking place in Zagros fold and thrust belt, and the role of these processes in distribution of mineral resources of Iran, is vital for improving both geologic prognosis and predictions of oils and gas plays, and for environmental modeling aimed at regional geomorphological and applied geologic analysis: water runoff, landslide monitoring, earthquake and seismic mapping.
 
@@ -173,23 +179,25 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \newpar The Zagros fold and thrust belt is one of the world's largest petroleum provinces, a ca. 1,800-km long zone of deformed crustal rocks, formed as a result of the collision between the two tectonic plates: the Arabian Plate and the Eurasian Plate. The importance of the Zagros belt can be illustrated by the fact that it contains about 49\% of the existing hydrocarbon reserves of the fold and thrust belts \cite{Cooper}. The Zagros fold and thrust belt is formed along the line of the oblique convergence of the Arabian Plate which moves northwards to the Eurasian Plate at a rate of ca. 3 cm/year \cite{Talebian}. 
 
+\begin{figure}[H]
 \begin{center}
 \includegraphics[height=10.0cm]{Fig_02.jpg}
-
 \vspace{6pt}	
 \figtab {\bf Figure 2.} Geologic map of Iran. Mapping: QGIS.  Source: author.
 \end{center}
+\end{figure}
 
 \newpar The structural geologic complexity of Zagros belt resulted from the geologic deformation, can be illustrated by the presence of the out-of-sequence, basement-rooted thrusts, incompetent cover strata, folds superimposed upon the pre-existing structures. It also includes a sequence of heterogeneous latest Neoproterozoic–Phanerozoic sedimentary cover 7 to 12 km thick strata overlying Precambrian crystalline basement \cite{Alavi2007}. The Zagros suture between the Arabian and Eurasian plates is directed along a line within SE Turkey through northern Iraq and southern Iran. Southwest of this suture, the continental margin of the Arabian plate is deformed by folds, thrusts, and strike-slip faults within the Zagros mountains. Nowadays, the geologic dynamics in the Zagros mountains continues with the deformation front lying roughly parallel to the Iranian shoreline of the Persian Gulf. 
 
 \newpar Regional tectonic movements can also be illustrated by the gradual growth of the Turkish-Iranian Plateau which incorporates the adjacent parts of the Zagros fold-and-thrust belt \cite{Allen}. The geologic stratigraphy of Zagros fold-thrust belt has recently been updated and classified as 4 groups of rocks: 1) the lowest group (Precambrian to Devonian) which consists of several subgroups: i) the Neoproterozoic to Cambrian rocks of evaporites, siliciclastic deposits and carbonates; ii) Cambrian consisting of shallow, marine siliciclastic and carbonate rocks; iii) Ordovician, Silurian, and Devonian shales, siltstones, and volcanogenic sandstones; 2) Permian and the other Triassic rocks, composed of basal siliciclastic rocks and evaporitic carbonates; 3) shallow- and deep-water carbonates accumulated on a Neo-Tethyan continental shelf during earliest Jurassic; 4) Cretaceous siliciclastic and carbonate deposits of Zagros orogen \cite{Alavi2004}. 
 
+\begin{figure}[H]
 \begin{center}
 \includegraphics[height=11.0cm]{Fig_03.jpg}
-
 \vspace{6pt}	
 \figtab {\bf Figure 3.} Lithologic map of Iran. Mapping: QGIS. Source: author. Source: author.
 \end{center}
+\end{figure}
 
 \newpar A notable part of the geomorphology of Zagros is presented by the Fars arc and thrust belt, propagated under the impact of the Oman Peninsula. The oblique convergence between the Arabic plate and the Iran block is mostly extending along the Fars arc \cite{Aubourg}. The hydrocarbon production is notable for the Southwest Zagros where oil fields are concentrated. Among other, the Asmari Oligo-Miocene Formation is well-known since it contains a lot of the hydrocarbon reserves of this area \cite{Ahmadhadi}. Besides, the petroleum resources of Zagros, the southern Iran has a remarkable salt plugs segmented by salt diapiric provinces: Hormuz, Shiraz-Kazerun and Nyriz-Jahrum sub-basins, which is deeply connected with the structure and evolution of the Zagros Fold-and-Thrust Belt faulting, as described in more detailed in relevant publications \cite{Bahroudi,Khodabakhshnezhad,Jahanietal2009}. 
 
@@ -359,8 +367,96 @@ library(tmap)
 alt = getData("alt", country = "Iran", path = tempdir())
 \end{lstlisting}
 
+\newpar To extract the relief characteristics of the Iranian Plate, the ‘raster’ package of R was used. The results were visualised as several thematic maps Figures \ref{Fig-7}, \ref{Fig-8}, \ref{Fig-9}, \ref{Fig-10} and \ref{Fig-11} presenting a series of morphometric analyses: 1) slope analysis presenting the default visualisation by ‘raster’ package Fig. \ref{Fig-7} and adjusted in ‘tmap’ package Fig. \ref{Fig-8}, 2) aspect maps modelled in ‘raster’ package and visualised in ‘tmap’ package Fig. \ref{Fig-9}, 3) hill shade map modelled in ‘raster’ package and visualised in ‘tmap’ package Fig. \ref{Fig-10}, 4) DEM elevation map modelled in ‘raster’ package and visualised in ‘tmap’ package Fig. \ref{Fig-11}.
 
-\pagebreak % if necessary, use the command to break the page
+\newpar The ‘raster’ package has a straightforward syntax and rather simplified manner of cartographic data processing. The code for modelling is as follows: slope = terrain(alt, opt = "slope"), where the ‘opt’ function was changed for ‘aspect’ and ‘alt’ aimed to visualize aspect and elevation. The hillshade was visualised by the code \ref{List8}:
+
+\lstset{caption={Listing for R code visualizing the geomorphological parameters and saving the output data},label=List8}
+\begin{lstlisting}[frame=single]
+slope = terrain(alt, opt = "slope")
+plot(slope)
+aspect = terrain(alt, opt = "aspect")
+plot(aspect)
+hill = hillShade(slope, aspect, angle = 40, 
+direction = 270)
+plot(hill)
+plot(alt)
+tmap_save(alt, "Iran_Slope.jpg", dpi = 300, height = 10)
+\end{lstlisting}
+
+\newpar The default visualisation of ‘raster’ package is illustrated in Fig. \ref{Fig-7} that  shows slope map of Iran. After the initial models were created, the data for each map in Figures \ref{Fig-8}, \ref{Fig-9}, \ref{Fig-10} and \ref{Fig-11} were imported to the ‘tmap’ package where the cartographic processing is more sophisticated. Thus, for instance, the cartographic elements are adjusted using special flags in the options of the function in a package. 
+
+\newpar An example of the code for the cartographic adjustments is as follows in Listing \ref{List9}: 
+
+\lstset{language=R,caption={Listing of R language visualising the geographic map on the image in Fig. \ref{Fig-8}},label=List9}
+\begin{lstlisting}[frame=single]
+# tmaptools::palette_explorer()
+tmap_mode("plot")
+map1 <-
+    tmap_style("watercolor") +
+    tm_shape(slope, name = "Slope", title = "Slope") +
+    tm_raster(
+        title = "Slope (0\u00B0-90\u00B0)",
+        palette = "-Set1",
+        style = "quantile", n = 10,
+        breaks = c(5, 10, 20, 30, 40, 50, 60, 70, 80, 90),
+        legend.show = T, legend.hist = T, legend.hist.z=0,) +
+    tm_scale_bar(
+        width = 0.25, text.size = 0.8, text.color = "black",
+        color.dark = "black",color.light = "white",
+        position=c("center", "bottom"), lwd = 1) +
+    tm_compass(
+        type = "radar", position=c("right", "top"), 
+        size = 10.0) +
+    tm_layout(scale = .8,
+        main.title = "Slope terrain analysis <...> R",
+        main.title.position = "center", 
+        main.title.color = "black",
+        main.title.size = 1.0, 
+        title = "Slope (0\u00B0-90\u00B0)",
+        title.color = "black",
+        title.size = 1.0, title.position = c("left", "top"),
+        panel.labels = c("R: tmap, raster, sp, sf"),
+        panel.label.color = "darkslateblue",
+        panel.label.size = 1.0, 
+        legend.position = c("left","bottom"),
+        legend.bg.color = "grey90",
+        legend.bg.alpha = .2,legend.outside = FALSE,
+        legend.width = .3, legend.height = .5,
+        legend.hist.height = .2,legend.title.size = 0.9,
+        legend.text.size = 0.8, inner.margins = 0) +
+    tm_graticules(
+        ticks = TRUE,  lines = TRUE, labels.rot = c(15, 15), 
+        col = "azure3", lwd = 1, labels.size = 1.0)
+# plot map
+map1
+tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
+\end{lstlisting}
+
+\newpar The 'tmap' functions 'tm\_scale\_bar', 'tm\_raster' and 'tm\_graticules' were used for plotting self-explaining cartographic elements. The main adjustments f the graphical output were set ip in the 'tm\_layout' function where the following elements were visualised (colour, size, locations of the elements on the map): legend, panel annotations, title, labels. 
+
+\newpar The relationship between the geomorphological elements (slope, aspect, elevation), 3D topographic model and geologic structure of Iran Fig. \ref{Fig-3} and Fig. \ref{Fig-4} was used to analyse the variations of the homogeneity of the relief, i.e., if the area has an increasingly higher variations in slope and steepness in Zagros Mountains or the dominating landforms are the stable low-level lowlands mostly located in the basin of tributaries of Tigris River in the south-western part of Iran. Then the histograms for each of the morphometric maps were created using the 'legend.hist = T' option in the 'tm\_raster' function based on the automatically analysed data distribution. 
+
+\newsection{5. RESULTS AND DISCUSSION}
+
+\newpar The comparisons of the topographic, geological, geomorphological and geophysical maps as well as the values of general morphometric elements (slope, aspect, hillshade and elevation) with the relief map revealed that the regions of the Zagros fold and thrust zones often corresponds to differing morphometric properties. 
+
+\newpar For instance, higher values of Elburz and Zagros ranges, selected ranges of Kopet Dag and Makran slopes Fig. \ref{Fig-1} shown as bright red colours in Fig. \ref{Fig-8} are associated with the extreme steep slopes, while major deserts of Iran, such as Dasht-e Kavir, Dasht-e Lut and Great Salt Desert Fig. \ref{Fig-1} are mostly associated with the slopes having lowest steepness (grey colours in Fig. \ref{Fig-8}).
+
+\newpar The three distinct Fold Belts shown in Fig. \ref{Fig-3} – the Kopet Dag, Elburz and Zagros – have the dense locality of major faults (shown red in Fig. \ref{Fig-3}) that are associated with the geologic formation controlled by the tectonic constraints on the evolution (e.g. salt‐bearing Neogene sediments, are folded and cut by faults in Alborz Mountains), as it is also reported in the existing works \cite{Baikpour,Burberry}. Variations in the fold patterns, geologic characteristics and de- formation style can be seen by comparison of the Fig. \ref{Fig-2} and Fig. \ref{Fig-4} showing the three-dimensional and plain map visualisations of the topography and geology, respectively. 
+
+\newpar The variations in the relief changing according to various areas of Zagros belt are also reported in previous publications, e.g. \cite{Casciello,Jimenez,Hessami}. Geologic structure of Zagros fold and thrust belt, including visualised geologic provinces, major faults, surficial lithologic boundaries, and bedrock geology also affects both the local shape of geomorphic landforms of Iran and the slope steepness. 
+
+\newpar Geophysical discontinuities Fig. \ref{Fig-5} and free-air gravity anomalies Fig. \ref{Fig-6} were demonstrated by the two GMT-based maps showing general increase of geoid undulation values in SE-NW direction. That is, the Indian geopotential low-level geoid anomalies can be clearly seen Fig. \ref{Fig-5} as low values (below 60 m, coloured blue to deep blue in Fig. \ref{Fig-5} while Zagros fol and thrust belt are mostly covered by the slightly positive values (above -10 to 5: yellow to orange colours in south-east Zagros area), followed by the strongly positive values of above 5 m (bright red colours in Fig. \ref{Fig-5}) which shows general increase of geoid heights along the Zagros mountains chain. 
+
+\newpar The basin of Persian Gulf demonstrates mostly negative values from -65 to -40 m (light blue colours in Fig. \ref{Fig-5}) with slightly negative values in the Tigris and Euphrates rivers (aquamarine colours, from -40 to -20 m). The general gravity properties such as the free-air gravity Fig. \ref{Fig-6} also correspond to the geologic rock types and lithology of the region by the comparison of Fig. \ref{Fig-6} and 4 where the isolines of gravity correspond to the lithological rock types distribution, which points at the strong correlation between the geophysical and geological setting that can be explained by the rock density, porosity and structure. 
+
+\newpar The geomorphometry of Iran in general and the Zagros mountain as its particular, most remarkable landform and similar relief features (e.g. Elburz, Kopet Dag mountain chains) is visualised in the set of figures plotted in R: the evaluation of slope Fig. \ref{Fig-7} and Fig. \ref{Fig-8}, aspect orientation of slopes Fig. \ref{Fig-9}, hillshade with artificial illumination highlighting the relief of the country (Fig. \ref{Fig-10}) and DEM based visualisation of the geomorphological properties better highlighting geologic structure of Zagros and surrounding relief (Fig. \ref{Fig-11}). These models were plotted to illustrate the complex landforms of Iran along Zagros forl and thrust belt and in other regions of country. 
+
+\newpar The wide river valleys (e.g. tributaries of Tigris River) have gentler, almost flat relief and low-leveled slopes, and have rather smoothed, gentle slopes, while mountainous areas have steeper gradients, suggesting that geologic evolution of the Zagros fold and thrust belt formation has created a complex alteration between the large and gentle landforms. At the same time, local development of flattened relief in Dasht-e Kavir, Dasht-e Lut and Great Salt Desert is also evident by the comparative analysis between the maps in Fig. \ref{Fig-1} with Fig. \ref{Fig-7} and Fig. \ref{Fig-8} (slope), Fig. \ref{Fig-9} (aspect), Fig. \ref{Fig-10} and Fig. \ref{Fig-11} (relief).
+
+
+%\pagebreak % if necessary, use the command to break the page
 
 \newsubsubsection {3.2.1. First subsubsection}
 
@@ -386,7 +482,8 @@ alt = getData("alt", country = "Iran", path = tempdir())
 
 %\bibliographystyle{apalike}
 %\bibliographystyle{plain}
-\bibliographystyle{unsrt}
+
+\bibliographystyle{plainnat}
 \bibliography{Iran.bib}
 \nocite{*}
 
