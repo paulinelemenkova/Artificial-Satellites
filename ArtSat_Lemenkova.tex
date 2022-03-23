@@ -75,6 +75,7 @@
 % end of the EDITOR section
 % -----------------------------------------------------------------------------------------------
 
+\graphicspath{{figures/}} % path to folder with figures
 
 \begin{document}
 \sloppy
@@ -123,9 +124,16 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \newsection {1. INTRODUCTION}
 
-\newpar The study focuses on the geomorphological 2D and 3D mapping of the Zagros Fold-and-Thrust Belt using scripting cartographic techniques. The Zagros Fold-and-Thrust Belt is a major orogenic landform of Iran, a part of the Alpine-Himalayan orogenic belt, located in the northern part of Arabian plate. Geologically, it was formed as a result of the collision between the Arabian and central Iran tectonic plates \cite{Jahani}. The observed variations in geomorphology of Zagros mountains is a primary indicator of geologic and tectonic processes leading to its landform formation. The shape of the modern topography of the Zagros Fold-and-Thrust Belt reflected in basin structural division results from the regional tectonic and sedimentary evolution involving deep interactions between the Earth's crust, mantle and sub-surface geologic processes occurring since Quaternary. 
+\newpar The study focuses on the geomorphological 2D and 3D mapping using scripting cartographic techniques for the Zagros Fold-and-Thrust Belt, Iran, Figure 1. The Zagros Fold-and-Thrust Belt is a major orogenic landform of Iran, a part of the Alpine-Himalayan orogenic belt, located in the northern part of Arabian plate. Geologically, it was formed as a result of the collision between the Arabian and central Iran tectonic plates \cite{Jahani}. The observed variations in geomorphology of Zagros mountains is a primary indicator of geologic and tectonic processes leading to its landform formation. The shape of the modern topography of the Zagros Fold-and-Thrust Belt reflected in basin structural division results from the regional tectonic and sedimentary evolution involving deep interactions between the Earth's crust, mantle and sub-surface geologic processes occurring since Quaternary. 
 
 \newpar Variations in the geomorphic structures of the Zagros fold and thrust belt system are a significant indicator on the distribution of mineral resources, since Zagros region belongs to the key basins of the oil and gas reserves in the Middle East, e.g. with prolific petroleum plays in the Zagros Foreland \cite{Bosold}. Spatial geological structure of the Zagros Basin differs from SW to NE dividing the basin into the three major zones: foredeep, simply folded, and thrust fault. Spatial difference sin geological structure are reflected in the distribution of mineral deposits: the oil fields are mostly located in the foredeep zone, gas fields – in the simply folded zone and only few fields are in the thrust fault zone. The belt of prolific oil and gas fields is bounded on the NE by the high Zagros mountains and on the south and west by the outcropping crystalline basement of the Arabian Shield \cite{Beydoun}. 
+
+\begin{center}
+\includegraphics[height=14.0cm]{Fig_01.jpg}
+
+\vspace{6pt}	
+\figtab {\bf Figure 1.} Topographic map of Iran. Mapping: GMT. Source: author. 
+\end{center}
 
 \newpar The Zagros orogenic belt of Iran consists, from NE to SW, of the parallel tectonic subdivisions with the increased intensity of deformation NE from the Persian Gulf-Mesopotamian basin: 1) the Urumieh-Dokhtar Magmatic Assemblage; 2)  the Sanandaj-Sirjan Zone; 3) the Zagros Simply Folded Belt \cite{Alavi1994}. Enhanced understanding of the geologic and tectonic processes taking place in Zagros fold and thrust belt, and the role of these processes in distribution of mineral resources of Iran, is vital for improving both geologic prognosis and predictions of oils and gas plays, and for environmental modeling aimed at regional geomorphological and applied geologic analysis: water runoff, landslide monitoring, earthquake and seismic mapping.
 
@@ -145,37 +153,35 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \newpar Presented multi-source thematic geodata modelling helped to describe the geomorphic variations in Zagros fold and thrust belt and assist in monitoring of its mineral resources. The main results define the significant geomorphological variations along the Zagros mountains belt and within Iran. In addition, using the geomorphometric analysis by means of R language, this paper provided a numerical evaluation and visual presentation of the slope, aspect and hillshade relief visualisation for the whole country illustrating the topographic structure of the Zagros basin.
 
-\newsection {2. NEXT SECTION}
+\newsection {2. GEOLOGIC BACKGROUND}
 
-\newpar The first paragraph should be written with no ident. Please write your text in good English (American or British usage is accepted, but not a mixture of them), do not use hyphenation. Figures and tables should follow caption. The captions of the figures should follow the figures and the titles of the tables should come before the tables. Figure 1 presents the cover of the Artificial Satellites, Journal of Planetary Geodesy. The figure and table captions should be in font 11 pt. with the word "Figure"/"Table" and the number in bold.
-
-% sample figure
+\newpar The Zagros fold and thrust belt is one of the world's largest petroleum provinces, a ca. 1,800-km long zone of deformed crustal rocks, formed as a result of the collision between the two tectonic plates: the Arabian Plate and the Eurasian Plate. The importance of the Zagros belt can be illustrated by the fact that it contains about 49\% of the existing hydrocarbon reserves of the fold and thrust belts \cite{Cooper}. The Zagros fold and thrust belt is formed along the line of the oblique convergence of the Arabian Plate which moves northwards to the Eurasian Plate at a rate of ca. 3 cm/year \cite{Talebian}. 
 
 \begin{center}
-\includegraphics[height=5.0cm]{Artsat_cover.jpg}
+\includegraphics[height=10.0cm]{Fig_02.jpg}
 
 \vspace{6pt}	
-\figtab {\bf Figure 1.} The cover of the  Artificial Satellites, Journal of Planetary Geodesy
+\figtab {\bf Figure 2.} Geologic map of Iran. Mapping: QGIS.  Source: author.
 \end{center}
 
-\newpar The second paragraph as well as the next ones should have no ident. Table 1 presents the number of the issues of the Artificial Satellites, Journal of Planetary Geodesy, edited in the years 2001-2004. If part of the table is on the next page, it is necessary to repeat the header row.
+\newpar The structural geologic complexity of Zagros belt resulted from the geologic deformation, can be illustrated by the presence of the out-of-sequence, basement-rooted thrusts, incompetent cover strata, folds superimposed upon the pre-existing structures. It also includes a sequence of heterogeneous latest Neoproterozoic–Phanerozoic sedimentary cover 7 to 12 km thick strata overlying Precambrian crystalline basement \cite{Alavi2007}. The Zagros suture between the Arabian and Eurasian plates is directed along a line within SE Turkey through northern Iraq and southern Iran. Southwest of this suture, the continental margin of the Arabian plate is deformed by folds, thrusts, and strike-slip faults within the Zagros mountains. Nowadays, the geologic dynamics in the Zagros mountains continues with the deformation front lying roughly parallel to the Iranian shoreline of the Persian Gulf. 
 
-% sample table
+\newpar Regional tectonic movements can also be illustrated by the gradual growth of the Turkish-Iranian Plateau which incorporates the adjacent parts of the Zagros fold-and-thrust belt \cite{Allen}. The geologic stratigraphy of Zagros fold-thrust belt has recently been updated and classified as 4 groups of rocks: 1) the lowest group (Precambrian to Devonian) which consists of several subgroups: i) the Neoproterozoic to Cambrian rocks of evaporites, siliciclastic deposits and carbonates; ii) Cambrian consisting of shallow, marine siliciclastic and carbonate rocks; iii) Ordovician, Silurian, and Devonian shales, siltstones, and volcanogenic sandstones; 2) Permian and the other Triassic rocks, composed of basal siliciclastic rocks and evaporitic carbonates; 3) shallow- and deep-water carbonates accumulated on a Neo-Tethyan continental shelf during earliest Jurassic; 4) Cretaceous siliciclastic and carbonate deposits of Zagros orogen \cite{Alavi2004}. 
 
 \begin{center}
-\figtab {\bf Table 1.} The  number of the issues of the Artificial Satellites edited in the years 2001-2004
-\begin{center}
-  \begin{tabular}[5pt]{|C{2.0cm}|C{4.0cm}|}
-    \hline
-    \bf{Year} & \bf{Number of issues} \\ \hline
-    2001 & 4 \\ \hline
-    2002 & 4 \\ \hline
-    2003 & 4 \\ \hline
-    2004 & 4 \\
-    \hline
-  \end{tabular}
+\includegraphics[height=11.0cm]{Fig_03.jpg}
+
+\vspace{6pt}	
+\figtab {\bf Figure 3.} Lithologic map of Iran. Mapping: QGIS. Source: author. Source: author.
 \end{center}
-\end{center}
+
+\newpar A notable part of the geomorphology of Zagros is presented by the Fars arc and thrust belt, propagated under the impact of the Oman Peninsula. The oblique convergence between the Arabic plate and the Iran block is mostly extending along the Fars arc \cite{Aubourg}. The hydrocarbon production is notable for the Southwest Zagros where oil fields are concentrated. Among other, the Asmari Oligo-Miocene Formation is well-known since it contains a lot of the hydrocarbon reserves of this area \cite{Ahmadhadi}. Besides, the petroleum resources of Zagros, the southern Iran has a remarkable salt plugs segmented by salt diapiric provinces: Hormuz, Shiraz-Kazerun and Nyriz-Jahrum sub-basins, which is deeply connected with the structure and evolution of the Zagros Fold-and-Thrust Belt faulting, as described in more detailed in relevant publications \cite{Bahroudi,Khodabakhshnezhad,Jahanietal2009}. 
+
+\newpar The tectonics of Zagros has a spatially diverse style with a general trend of NW–SE-oriented folds and thrusts, in the Simple Folded Zone, and right-lateral strike-slip on the Main Recent Fault. The fold geometries of Zagros indicate several décollement horizons including shale units, evaporites in the Neogene, Mesozoic, Lower Palaeozoic and upper Proterozoic successions \cite{Blanc}. Detailed stratigraphy of the tectonic sub-division of Zagros Suture Zone formed since Cretaceous has been reported in existing works \cite{Ali2014,Authemayou,Ali2012}. 
+
+\newpar The geologic stratigraphy of Zagros mirrors the major steps in its evolution that can be briefly characterized as follows. The subduction of the Paleo-Tethys induced the formation of the Zagros Basin caused by intense rifting, which then further evolved in the Jurassic period. The main rocks of the Mesozoic and Cenozoic reservoirs (carbonate, shale, and evaporite) are sourced from the continental marginal deposit between the Arabian Shield and Zagros belt, extending to over 1000 km southwards. Nowadays, such particular structural-geomorphological features and topographic fronts at the surface of Zagros are main regions of earthquakes \cite{Berberian}. 
+
+\newpar The thrusts, frontal asymmetric anticlines, escarpments and Quaternary deformation, mark topographic fronts at the relief surface of Zagros, and have vertically displaced geologic, beds which highlights deep correlation between the topographic, geomorphological and geologic structure of Zagros fold and thrust belt.
 
 \newsection {3. SECTION WITH SUBSECTIONS}
 
@@ -187,16 +193,6 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \newpar Equations should be placed within the text (1). They should be centered and numbered successively with Arabic numerals (minor non-referenced expressions might be not numbered). The equation’s number should be positioned in parentheses right justified at the line of the equation:
 
-% sample equation
-
-\begin{equation}
-   \label{simple_equation}
-   \alpha = \sqrt{ \beta }
-\end{equation}
-
-where: \\
-\tab[1cm]$\alpha$	\tab[0.5cm]~--	\tab[0.5cm]first variable description; \\
-\tab[1cm]$\beta$	\tab[0.5cm]~--	\tab[0.5cm]second variable description.
 
 \newsubsection {3.2. Second subsection}
 
