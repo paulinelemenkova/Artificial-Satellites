@@ -17,6 +17,22 @@
 \usepackage{url}
 \usepackage{hyperref}
 
+\usepackage{graphicx}	
+\usepackage{listings}   
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\colour{green!40!black},
+  commentstyle=\itshape\colour{purple!40!black},
+  identifierstyle=\colour{blue},
+  stringstyle=\colour{orange},
+}	
+
 \usepackage{array}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{2pt}}m{#1}}
 
@@ -183,13 +199,64 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \newpar The thrusts, frontal asymmetric anticlines, escarpments and Quaternary deformation, mark topographic fronts at the relief surface of Zagros, and have vertically displaced geologic, beds which highlights deep correlation between the topographic, geomorphological and geologic structure of Zagros fold and thrust belt.
 
-\newsection {3. SECTION WITH SUBSECTIONS}
+\newsection {3. MATERIALS AND METHODS}
 
-\newpar In the case of a well-developed article structure, subsections should be used to preserve readability.
+\newpar The proposed study is performed in a combination of methods using open source geoinformation tools such as console-based GMT, a graphical user interface (GUI) QGIS and programming language R. the datasets include openly available geospatial raster and vector layers as follows. 
 
-\newsubsection {3.1. First subsection}
+\begin{enumerate}  
+	\item The topographic map Fig. 1 was based on GEBCO/SRTM \cite{GEBCO}, a high-resolution (15 arc-second) raster grid of the Earth relief. The GEBCO grid has been widely used in geoscience papers where its advantages were discussed \cite{Lemenkova2020c,Lemenkova2020d}. GEBCO presents a combination of land topography with partially measured and partially estimated seafloor topography using remote sensing data. 
+	\item The 3D relief model of Zagros mountains Fig. 2 is based on the ETOPO5 raster grid \cite{AmanteEakins}. the ETOPO presents a numerical model data of the Earth’s topography. Similar to GEBCO, it has a global coverage but with lower resolution which is useful for plotting big data sets due to the rediced computer processing time (e.g. GEBCO grid has an 11.72 Gb size for the global grid, while the ‘earth\_relief\_05m.grd’ has 10.8 Mb size which fastens the 3D modelling). The 3D modelling and applications of ETOPO1 grids have been discussed in previous works \cite{Lemenkova2020e,Verard,Lemenkova2020f,Spooner,Lemenkova2020g}, where their effectiveness is presented. 
+	\item The geologic mapping Fig. 3 was mapped using the datasets of UNESCO which includes the petroleum geology, geologic provinces, and oil and gas fields of Iran. This dataset is a cartographic part of the worldwide series released by the U.S.G.S. World Energy Project obtained in shape (.shp) file ArcGIS format and the processed in the open source QGIS.
+	\item Surficial geology of Iran Fig. 4 is mapped using the datasets of UNESCO which includes the petroleum geology, geologic provinces, and oil and gas fields released by the U.S.G.S. World Energy Project obtained in vector shape (.shp).
+	\item The geoid gravitational model of Iran Fig. 5 is based on using the EGM-2008 grid \cite{Pavlis} which has been used in the publications on geophysics and geology \cite{Lemenkova2020h}.
+	\item The free-air gravity anomaly Fig. 6 is based on the open source geophysical datasets \cite{Sandwell1997,Sandwell2014} and represents the gravity after a free-air correction applied for the elevation at which a measurement is made (that is, the mean sea level). The gravity modelling has been presented in various publications \cite{Lemenkova2020i} and \cite{Djamour} with techniques of visualisation and theoretical basis explained with reference to the geology. The geophysical fieldwork often uses magnetic, gravimetric and deep crustal seismic (reflection and refraction/wide-angle) surveys which provide the necessary database for detailed mapping \cite{Gohl2006a,Gohl2006b,Kuhn}, but this study is fully based on the computer-based data processing using shell scripting cartographic techniques for applied geology.
+	\item The five geomorphometric maps (Fig. 7, 8, 9, 10 and 11) are based on the DEM embedded in RStudio environment \cite{RStudio} of R programming language \cite{RCoreTeam} by library ‘raster’ which was called by the country name using the following code: ‘alt = getData("alt", country = "Iran", path = tempdir())’. The dataset was then uploaded to the RStudio project and used for further processing: modelling slope, aspect, hillshade and terrain relief of Iran using libraries ‘raster’ \cite{Hijmans} and ‘tmap’ \cite{Tennekes} which have their syntax along with common general syntax of R presented in geoscience publications \cite{Lemenkova2019b,Lemenkova202007}.  
+\end{enumerate}
 
-\newpar Multilevel numbering should precede the title of each subsequent subsection.
+\newsubsection {3.1. Mapping by GMT}
+
+\newpar The maps in GMT are performed in several stages using several GMT modules \cite{Wessel2019} using occasional data processing (converting, projection, retrieving data information) by GDAL \cite{GDAL}. The general steps are given as follows. Image capture and visualisation by the code \ref{List1}:
+
+\lstset{caption={Listing for GMT script for converting the formats and visualising raster in Fig. 5},label=List1}
+\begin{lstlisting}[frame=single]
+gmt grdconvert n00e45/w001001.adf geoid_IR.grd
+gmt grdconvert n00e00/w001001.adf geoid_IQ.grd
+gdalinfo geoid_IR.grd -stats
+gdalinfo geoid_IQ.grd -stats
+gmt makecpt -Chaxby -T-100/50/1 > colors.cpt
+% initiating the file
+ps=Geoid_IR.ps
+gmt grdimage geoid_IR.grd -Chaxby -R43/65/24/40 -JM6.5i 
+-P -I+a15+ne0.75 -Xc -K > $ps
+gmt grdimage geoid_IQ.grd -Ccolors.cpt -R -J -P 
+-I+a15+ne0.75 -Xc -O -K >> $ps
+\end{lstlisting}
+
+Here the topographic image was uploaded to GMT and visualised using the coordinate extent by using the ‘grdimage’ module. Adding cartographic grid by the code \ref{List2} using the ‘psbasemap’ module of GMT: 
+
+\lstset{caption={Listing for GMT script plotting cartographic grid on the image},label=List2}
+\begin{lstlisting}[frame=single]
+gmt psbasemap -R -J \
+    -Bpxg2f1a2 -Bpyg2f1a2 -Bsxg2 -Bsyg1 \
+    --MAP_TITLE_OFFSET=1.0c \
+    --MAP_ANNOT_OFFSET=0.1c \
+    --FONT_TITLE=12p,25,black \
+    --FONT_ANNOT_PRIMARY=7p,25,black \
+    --FONT_LABEL=8p,25,black \
+    --MAP_FRAME_AXES=WEsN \
+    -B+t"Geoid gravitational model of Iran" \
+    -Lx14.0c/-2.5c+c318/-57+w300k+l"Mercator projection. 
+    Scale: km"+f \
+    -UBL/0p/-70p -O -K >> $ps
+\end{lstlisting}
+
+
+
+
+
+
+
+
 
 \newpar Equations should be placed within the text (1). They should be centered and numbered successively with Arabic numerals (minor non-referenced expressions might be not numbered). The equation’s number should be positioned in parentheses right justified at the line of the equation:
 
