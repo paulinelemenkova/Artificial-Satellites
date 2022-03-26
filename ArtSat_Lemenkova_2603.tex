@@ -20,7 +20,8 @@
 \usepackage{color}
 \usepackage{float}
 \usepackage[labelfont=bf,labelsep=period,font=singlespacing,skip=-10pt,hypcapspace=0pt,margin=5mm]{caption}
-	\captionsetup[boxed]{skip=0pt}
+	\captionsetup[boxed]{skip=0pt,margin=5mm}
+	\setlength{\belowcaptionskip}{-10pt}
 \usepackage{graphicx}
 	
 \usepackage{listings}   
@@ -237,7 +238,7 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \newpar The maps in GMT are performed in several stages using several GMT modules \cite{Wessel2019} using occasional data processing (converting, projection, retrieving data information) by GDAL \cite{GDAL}. The general steps are given as follows. Image capture and visualisation by the code \ref{List1}:
 
-\lstset{caption={Listing for GMT script for converting the formats and visualising raster in Fig. 4},label=List1}
+\lstset{caption={GMT code for converting formats and visualising raster in Fig. 4},label=List1}
 \begin{lstlisting}[frame=single,basicstyle=\scriptsize]
 gmt grdconvert n00e45/w001001.adf geoid_IR.grd
 gmt grdconvert n00e00/w001001.adf geoid_IQ.grd
@@ -261,7 +262,7 @@ gmt grdimage geoid_IQ.grd -Ccolors.cpt -R -J -P
 
 \newpar The topographic image was uploaded to GMT and visualised using the coordinate extent by using the ‘grdimage’ module. Adding cartographic grid by the code \ref{List2} using the ‘psbasemap’ module of GMT: 
 
-\lstset{caption={Listing for GMT script plotting cartographic grid on the image},label=List2}
+\lstset{caption={GMT code for plotting cartographic grid on the image},label=List2}
 \begin{lstlisting}[frame=single,language=bash,basicstyle=\scriptsize]
 gmt psbasemap -R -J -Bpxg2f1a2 -Bpyg2f1a2 -Bsxg2 -Bsyg1 \
     --MAP_TITLE_OFFSET=1.0c --MAP_ANNOT_OFFSET=0.1c \
@@ -272,7 +273,7 @@ gmt psbasemap -R -J -Bpxg2f1a2 -Bpyg2f1a2 -Bsxg2 -Bsyg1 \
 
 \newpar Text annotations using the code in \ref{List3}, where the ‘56.7 26.0’ signify the longitude/latitude coordinates of the location and the ‘+a-80’ flag means the rotation of the text on the map: 
 
-\lstset{caption={Listing for GMT script for plotting textual annotations on the image},label=List3}
+\lstset{caption={GMT code for plotting textual annotations on the image},label=List3}
 \begin{lstlisting}[frame=single,language=bash,basicstyle=\scriptsize]
 gmt pstext -R -J -N -O -K -F+jTL+f10p,26,blue1+jLB+a-80 
 >> $ps << EOF 56.7 26.0 Hormuz EOF
@@ -280,7 +281,7 @@ gmt pstext -R -J -N -O -K -F+jTL+f10p,26,blue1+jLB+a-80
 
 \newpar The insert globe map was added on the main image using the code \ref{List4}: 
 
-\lstset{caption={Listing for GMT script inserting a small globe map on the image in Fig. 1.},label=List4}
+\lstset{caption={GMT code for inserting a small globe map on the image in Fig. 1.},label=List4}
 \begin{lstlisting}[frame=single,language=bash,basicstyle=\scriptsize]
 gmt pscoast -Rg -JG54/32N/$w -Da -Glightgoldenrod1 -A5000 -Bga -Wfaint -EIR+gred -Sdodgerblue \
 -O -K -X$x0 -Y$y0 >> $ps
@@ -288,7 +289,7 @@ gmt pscoast -Rg -JG54/32N/$w -Da -Glightgoldenrod1 -A5000 -Bga -Wfaint -EIR+gred
 
 \newpar The similar logic of the modular-based cartographic plotting has been applied for plotting the maps in Fig. 1, 2, 5 and Fig. 6. The resulting files in PostScript format was then converted into graphiscal format by the ‘psconvert’ module using the code \ref{List5}: 
 
-\lstset{caption={Listing for GMT script visualizing the image},label=List5}
+\lstset{caption={GMT code visualizing the image},label=List5}
 \begin{lstlisting}[frame=single,language=bash,basicstyle=\scriptsize]
 gmt psconvert Topo_IR.ps -A0.2c -E720 -Tj -Z
 \end{lstlisting}
@@ -302,7 +303,7 @@ gmt psconvert Topo_IR.ps -A0.2c -E720 -Tj -Z
 
 \newpar The 3D modelling in Fig. 5 (3D model of Zagros mountains) was performed using the code in Listing \ref{List6}:
 
-\lstset{caption={Listing for GMT script visualising the 3D image in Fig. 5}, label=List6}
+\lstset{caption={GMT code for 3D image visualisation in Fig. 5}, label=List6}
 \begin{lstlisting}[frame=single,language=bash,basicstyle=\scriptsize]
 gmt grdcut earth_relief_05m.grd -R43/65/24/40 -Gir_relief.nc
 gmt makecpt -Cturbo.cpt -V -T-3487/5149 > myocean.cpt
@@ -362,7 +363,7 @@ gmt psconvert IR3D165.ps -A1.2c -E720 -Tj -P -Z
 
 \newpar The maps in Figures 7, 8, 9, 10 and 11 are plotted using R language in RStudio integrated development environment, which combines a console for coding and a graphical menu for visualisation of plots. The main approach by ‘raster’ package of R consists in visualising geomorphometric models using DEM. The data were captured using the following code \ref{List7}: 
 
-\lstset{caption={Listing for R script for data capture and uploading necessary packages},label=List7}
+\lstset{caption={R code for data capture and uploading necessary packages},label=List7}
 \begin{lstlisting}[frame=single,language=R,basicstyle=\scriptsize]
 library(sp)
 library(raster)
@@ -394,7 +395,7 @@ tmap_save(alt, "Iran_Slope.jpg", dpi = 300, height = 10)
 
 \newpar An example of the code for the cartographic adjustments is as follows in Listing \ref{List9}: 
 
-\lstset{language=R,caption={Listing of R language visualising the geographic map on the image in Fig. 8},label=List9}
+\lstset{language=R,caption={R code for visualisation of the geographic map in Fig. 8},label=List9}
 \begin{lstlisting}[frame=single,language=R,basicstyle=\scriptsize]
 # tmaptools::palette_explorer()
 tmap_mode("plot")
@@ -432,7 +433,7 @@ tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
 	\begin{center}
 		\includegraphics[height=9.0cm]{Fig_07.jpg}
 	\end{center}
-\caption{Geomorphometric model of elevation made using R ‘raster’ package. Source: author.}\label{fig:07}
+\caption{Elevation model by R ‘raster’ package. Source: author.}\label{fig:07}
 \end{figure}
 
 \newpar The 'tmap' functions 'tm\_scale\_bar', 'tm\_raster' and 'tm\_graticules' were used for plotting self-explaining cartographic elements. The main adjustments f the graphical output were set ip in the 'tm\_layout' function where the following elements were visualised (colour, size, locations of the elements on the map): legend, panel annotations, title, labels. 
