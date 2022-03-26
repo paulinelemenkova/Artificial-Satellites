@@ -11,12 +11,18 @@
 \usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
-\setlength\parindent{0pt}
 
 \usepackage{cite}
 \usepackage{url}
 \usepackage{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{natbib}
+	\setlength{\bibsep}{5pt} % plus 0.3ex
+	\setlength\parindent{10pt}
+	\setlength\bibhang{0em}
+\bibliographystyle{agsm}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{color}
 \usepackage{float}
 \usepackage[labelfont=bf,labelsep=period,font=singlespacing,skip=-10pt,hypcapspace=0pt,margin=5mm]{caption}
@@ -487,7 +493,7 @@ tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
 
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[height=11.0cm]{Fig_11.jpg}
+		\includegraphics[height=12.0cm]{Fig_11.jpg}
 	\end{center}
 \caption{DEM elevation model of Iran. Mapping: R. Source: author.}\label{fig:11}
 \end{figure}
@@ -506,8 +512,7 @@ tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
 
 %\bibliographystyle{apalike}
 %\bibliographystyle{plain}
-
-\bibliographystyle{plainnat}
+%\bibliographystyle{plainnat}
 \bibliography{Iran.bib}
 %\nocite{*}
 
