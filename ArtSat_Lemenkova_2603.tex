@@ -11,13 +11,14 @@
 \usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames]{xcolor}
 
 \usepackage{cite}
 	\renewcommand\citepunct{,}
 \usepackage{url}
 \usepackage[hidelinks=true,bookmarks=true,hyperindex,breaklinks]{hyperref}
-	\hypersetup{bookmarksdepth=paragraph}
-%\hypersetup{ colorlinks=false, linkcolor=blue}
+	\hypersetup{bookmarksdepth=paragraph,colorlinks=true,linkcolor=Navy,urlcolor=DarkBlue,citecolor=black}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[authoryear,comma,round,semicolon]{natbib}
@@ -34,7 +35,6 @@
 \usepackage{url}
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{color}
 \usepackage{float}
 \usepackage[labelfont=bf,labelsep=period,font=singlespacing,skip=-10pt,hypcapspace=0pt,margin=5mm]{caption}
 	\captionsetup[boxed]{skip=0pt,margin=5mm}
@@ -42,7 +42,6 @@
 \usepackage{graphicx}
 	
 \usepackage{listings}   
-\usepackage{xcolor}
 \usepackage{setspace}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -239,7 +238,7 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \newsection {3. MATERIALS AND METHODS}
 
-\newpar The proposed study is performed in a combination of methods using open source geoinformation tools such as console-based GMT, a graphical user interface (GUI) QGIS and programming language R. the datasets include openly available geospatial raster and vector layers as follows. 
+\newpar The proposed study is performed in a combination of methods using open source geoinformation tools such as console-based GMT, a graphical user interface (GUI) QGIS and programming language R. Full scripts used for mapping by R and GMT are publicly avaiilable on author's GitHub repository for repeatability in similar studies: \href{https://github.com/paulinelemenkova/Mapping_Iran_R_GMT_Scripts-}{https://github.com/paulinelemenkova/Mapping\_Iran\_R\_GMT\_Scripts-}. The datasets include openly available geospatial raster and vector layers as follows. 
 
 \begin{enumerate}  
 	\item The topographic map Figure \ref{fig:01} was based on GEBCO/SRTM \citep{GEBCO}, a high-resolution (15 arc-second) raster grid of the Earth relief. The GEBCO grid has been widely used in geoscience papers where its advantages were used \citep{Lemenkova2020c,Lemenkova2020d,Lemenkova202112,Lindh}. GEBCO presents a combination of land topography with partially measured and partially estimated seafloor topography using remote sensing data. 
