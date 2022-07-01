@@ -34,6 +34,8 @@
 \bibliographystyle{dcu}
 %\bibliographystyle{apalike}
 \usepackage{url}
+
+\usepackage{soul}
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{float}
@@ -247,12 +249,12 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \begin{enumerate}  
 	\item The topographic map (Figure \ref{fig:01}) was based on GEBCO/SRTM \citep{GEBCO}, a high-resolution (15 arc-second) raster grid of the Earth relief. The GEBCO grid has been widely used in geoscience papers where its advantages were used \citep{Lemenkova2020c,Lemenkova2020d,Lemenkova202112,Lindh}. GEBCO presents a combination of land topography with partially measured and estimated bathymetry using remote sensing data. 
-	\item The 3D relief model of Zagros mountains (Figure \ref{fig:02}) is based on the ETOPO5 raster grid \citep{AmanteEakins}. The ETOPO presents a numerical model data of the Earth’s topography. Similar to GEBCO, it has a global coverage but with lower resolution which is useful for plotting big data sets due to the rediced computer processing time (e.g. GEBCO grid has an 11.72 Gb size for the global grid, while the ‘earth\_relief\_05m.grd’ has 10.8 Mb size which fastens the 3D modelling). The 3D modelling and applications of ETOPO1 grids have been reported in previous works \citep{Lemenkova2020e,Verard,Spooner,Lemenkova202017}, where their effectiveness is presented. 
-	\item The geologic mapping (Figure \ref{fig:03}) was performed using the datasets of UNESCO which includes the petroleum geology, geologic provinces, and oil and gas fields of Iran. This dataset is a cartographic part of the worldwide series released by the U.S.G.S. World Energy Project obtained in shape (.shp) file format and processed using QGIS.
-	\item The surficial geology of Iran (Figure \ref{fig:04}) is mapped using the datasets of UNESCO which includes the petroleum geology, geologic provinces, and oil and gas fields released by the U.S.G.S. World Energy Project obtained in vector shape (.shp).
-	\item The geoid gravitational model of Iran (Figure \ref{fig:05}) is based on using the EGM-2008 grid \citep{Pavlis} applied in studies on geophysics and geology \citep{Lemenkova2020h}.
+	\item The geologic mapping (Figure \ref{fig:02}) was performed using the datasets of UNESCO which includes the petroleum geology, geologic provinces, and oil and gas fields of Iran. This dataset is a cartographic part of the worldwide series released by the U.S.G.S. World Energy Project obtained in shape (.shp) file format and processed using QGIS.
+	\item The \hl{lithology} of Iran (Figure \ref{fig:03}) is mapped using the datasets of UNESCO \hl{on surficial geology} which includes the petroleum geology, geologic provinces, and oil and gas fields released by the U.S.G.S. World Energy Project obtained in vector shape (.shp).
+	\item The geoid gravitational model of Iran (Figure \ref{fig:04}) is based on using the EGM-2008 grid \citep{Pavlis} applied in studies on geophysics and geology \citep{Lemenkova2020h}.
+	\item The 3D relief model of Zagros mountains (Figure \ref{fig:05}) is based on the ETOPO5 raster grid \citep{AmanteEakins}. The ETOPO presents a numerical model data of the Earth’s topography. Similar to GEBCO, it has a global coverage but with lower resolution which is useful for plotting big data sets due to the rediced computer processing time (e.g. GEBCO grid has an 11.72 Gb size for the global grid, while the ‘earth\_relief\_05m.grd’ has 10.8 Mb size which fastens the 3D modelling). The 3D modelling and applications of ETOPO1 grids have been reported in previous works \citep{Lemenkova2020e,Verard,Spooner,Lemenkova202017}, where their effectiveness is presented. 
 	\item The free-air gravity anomaly (Figure \ref{fig:06}) is based on the open source geophysical datasets \citep{Sandwell1997,Sandwell2014} and represents the gravity after a free-air correction applied for the elevation at which a measurement is made (that is, the mean sea level). The gravity modelling has been presented in various publications \citep{Lemenkova2020i} and \citep{Djamour} with techniques of visualisation and theoretical basis explained with reference to the geology. The geophysical fieldwork often uses magnetic, gravimetric and deep crustal seismic (reflection and refraction/wide-angle) surveys which provide the necessary database for detailed mapping \citep{Lemenkova202140,Lemenkova202135,Lemenkova202127}, but this study is fully based on the computer-based data processing using shell scripting cartographic techniques for applied geology.
-	\item The five geomorphometric maps (Figure \ref{fig:07}, \ref{fig:08}, \ref{fig:09}, \ref{fig:10} and \ref{fig:11}) are based on the DEM embedded in RStudio environment \citep{RStudio} of R programming language \citep{RCoreTeam} by library ‘raster’ which was called by the country name using the following code: ‘alt = getData("alt", country = "Iran", path = tempdir())’. The dataset was then uploaded to the RStudio project and used for further processing: modelling slope, aspect, hillshade and terrain relief of Iran using libraries ‘raster’ \citep{Hijmans} and ‘tmap’ \citep{Tennekes} which have their syntax along with common general syntax of R presented in geoscience publications \citep{Lemenkova2019b}.  
+	\item The five geomorphometric maps (Figure \ref{fig:07}, \ref{fig:08}, \ref{fig:09}, \ref{fig:10} and \ref{fig:11}) are based on the DEM embedded in RStudio environment \citep{RStudio} of R programming language \citep{RCoreTeam} by library ‘raster’ which was called by the country name using the following code: ‘alt = getData("alt", country = "Iran", path = tempdir())’. The dataset was then uploaded to the RStudio project and used for further processing: modelling slope, aspect, hillshade and terrain relief of Iran using libraries ‘raster’ \citep{Hijmans} and ‘tmap’ \citep{Tennekes} which have their syntax along with common general syntax of R presented in geoscience publications \citep{Lemenkova2019b}. 
 \end{enumerate}
 
 \newsubsection {3.1. Mapping by GMT}
@@ -417,7 +419,9 @@ alt = getData("alt", country = "Iran", path = tempdir())
 
 \newpar To extract the relief characteristics of the Iranian Plate, the ‘raster’ package of R was used. The results were visualised as several thematic maps Figures \ref{fig:07} to \ref{fig:11} presenting a series of morphometric analyses: 1) slope analysis presenting the default visualisation by ‘raster’ package Figure \ref{fig:07} and adjusted in ‘tmap’ package Figure \ref{fig:08}, 2) aspect maps modelled in ‘raster’ package and visualised in ‘tmap’ package Figure \ref{fig:09}, 3) hill shade map modelled in ‘raster’ package and visualised in ‘tmap’ package Figure \ref{fig:10}, 4) DEM elevation map modelled in ‘raster’ package and visualised in ‘tmap’ package Figure \ref{fig:11}.
 
-\newpar The ‘raster’ package has a straightforward syntax and rather simplified manner of cartographic data processing. The code for modelling is as follows: slope = terrain(alt, opt = "slope"), where the ‘opt’ function was changed for ‘aspect’ and ‘alt’ aimed to visualize aspect and elevation. The hillshade was visualised by the code \ref{List8}:
+\newpar The ‘raster’ package has a straightforward syntax and rather simplified manner of cartographic data processing. The code for modelling is as follows: slope = terrain(alt, opt = "slope"), where the ‘opt’ function was changed for ‘aspect’ and ‘alt’ aimed to visualize aspect and elevation. \hl{The hillshade was visualised using the theoretical terrain computations described in} \cite{1456186}. \hl{The value of hillshade modelling consists in mapping the surface topography which include the important visual depth cue. The visualization is theoretically base don the dependence of elevation depicted on map on the tone or gray or colour level, as well as the compass orientation of the topographic surface elements.}
+
+The hillshade was visualised by the code \ref{List8}:
 
 \lstset{caption={R code visualizing the geomorphological parameters and saving the output data},label=List8}
 \begin{lstlisting}[frame=single,language=R,basicstyle=\scriptsize]
@@ -489,7 +493,7 @@ tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
 	\begin{center}
 		\includegraphics[height=11.0cm]{Fig_08.jpg}
 	\end{center}
-\caption{Slope terrain model of Iran. Mapping: R. Source: author.}\label{fig:08}
+\caption{Slope terrain model based on DEM of Iran. Mapping: R. Source: author.}\label{fig:08}
 \end{figure}
 
 \newpar Three distinct Fold Belts shown in Figure \ref{fig:03} – the Kopet Dag, Elburz and Zagros – have the dense locality of major faults (shown red in Figure \ref{fig:03}) that are associated with the geologic formation controlled by the tectonic constraints on the evolution (e.g. salt‐bearing Neogene sediments, are folded and cut by faults in Alborz Mountains), as it is also reported in the existing works \citep{Baikpour,Burberry}. Variations in the fold patterns, geologic characteristics and de- formation style can be seen by comparison of the Figures \ref{fig:02} and \ref{fig:04} showing the three-dimensional and plain map visualisations of the topography and geology.
