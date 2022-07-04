@@ -188,7 +188,7 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 \begin{figure}[H]
 	\begin{center}
 		\includegraphics[height=12.0cm]{Fig_01.jpg}
-	\end{center}\caption{Topographic map of Iran. Mapping: GMT. Source: author.}\label{fig:01}
+	\end{center}\caption{Topographic map of Iran. \hl{Data source: GEBCO}, \cite{GEBCO}. \hl{Mapping in GMT, own elaboration}.}\label{fig:01}
 \end{figure}
 
 \newpar The Zagros orogenic belt of Iran consists, from NE to SW, of the parallel tectonic subdivisions with the increased intensity of deformation NE from the Persian Gulf-Mesopotamian basin: 1) the Urumieh-Dokhtar Magmatic Assemblage; 2)  the Sanandaj-Sirjan Zone; 3) the Zagros Simply Folded Belt \citep{Alavi1994}. Enhanced understanding of the geologic and tectonic processes taking place in Zagros fold and thrust belt, and the role of these processes in distribution of mineral resources of Iran, is vital for improving both geologic prognosis and predictions of oils and gas plays, and for environmental modeling aimed at regional geomorphological and applied geologic analysis: water runoff, landslide monitoring, earthquake and seismic mapping.
@@ -211,7 +211,7 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 	\begin{center}
 		\includegraphics[height=10.0cm]{Fig_02.jpg}
 	\end{center}
-\caption{Geologic map of Iran. Mapping: QGIS. Source: author.}\label{fig:02}
+\caption{Geologic map of Iran. \hl{Data source: United States Geological Survey (USGS). Mapping in QGIS, own elaboration}.}\label{fig:02}
 \end{figure}
 
 \newpar The structural geologic complexity of Zagros belt resulted from the geologic deformation, can be illustrated by the presence of the out-of-sequence, basement-rooted thrusts, incompetent cover strata, folds superimposed upon the pre-existing structures. It also includes a sequence of heterogeneous latest Neoproterozoic–Phanerozoic sedimentary cover 7 to 12 km thick strata overlying Precambrian crystalline basement \citep{Alavi2007}. The Zagros suture between the Arabian and Eurasian plates is directed along a line within SE Turkey through northern Iraq and southern Iran. Southwest of this suture, the continental margin of the Arabian plate is deformed by folds, thrusts, and strike-slip faults within the Zagros mountains. Nowadays, the geologic dynamics in the Zagros mountains continues with the deformation front lying roughly parallel to the Iranian shoreline of the Persian Gulf. 
@@ -232,9 +232,9 @@ e-mails: polina.lemenkova@ulb.be, pauline.lemenkova@gmail.com \\
 
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[height=12.0cm]{Fig_03.jpg}
+		\includegraphics[height=20.0cm]{Fig_03.jpg}
 	\end{center}
-\caption{Lithologic map of Iran. Mapping: QGIS. Source: author}\label{fig:03}
+\caption{Lithologic map of Iran. \hl{Data source: United States Geological Survey (USGS). Mapping in QGIS, own elaboration}.}\label{fig:03}
 \end{figure}
 
 \newpar A notable part of the geomorphology of Zagros is presented by the Fars arc and thrust belt, propagated under the impact of the Oman Peninsula. The oblique convergence between the Arabic plate and the Iran block is mostly extending along the Fars arc \citep{Aubourg}. The hydrocarbon production is notable for the Southwest Zagros where oil fields are concentrated. Among other, the Asmari Oligo-Miocene Formation is well-known since it contains a lot of the hydrocarbon reserves of this area \citep{Ahmadhadi}. Besides, the petroleum resources of Zagros, the southern Iran has a remarkable salt plugs segmented by salt diapiric provinces: Hormuz, Shiraz-Kazerun and Nyriz-Jahrum sub-basins, which is connected with the structure and evolution of the Zagros Fold-and-Thrust Belt faulting, as described in detailes \citep{Bahroudi,Khodabakhshnezhad,Jahani}. 
@@ -315,7 +315,7 @@ EOF
 	\begin{center}
 		\includegraphics[height=13.0cm]{Fig_04.jpg}
 	\end{center}
-\caption{Geoid model of Iran. Mapping: GMT. Source: author.}\label{fig:04}
+\caption{Geoid model of Iran. \hl{Data source: Earth Gravitational Model (EGM-2008)}, \cite{Pavlis}. \hl{Mapping in GMT, own elaboration}.}\label{fig:04}
 \end{figure}
 
 \newpar The insert globe map was added on the main image using the code \ref{List4}: 
@@ -341,7 +341,7 @@ gmt psconvert Topo_IR.ps -A0.2c -E720 -Tj -Z
 	\begin{center}
 		\includegraphics[height=12.0cm]{Fig_05.jpg}
 	\end{center}
-\caption{3D model of Zagros mountains. Mapping: GMT. Source: author.}\label{fig:05}
+\caption{3D model of Zagros mountains. \hl{Data source: ETOPO 5-minute gridded elevation data, Data Announcement 88-MGG-02, Digital relief of the surface of the Earth. NOAA, National Geophysical Data Center, Boulder, Colorado, U.S.A., 1988}. URL: \href{https://www.ngdc.noaa.gov/mgg/global/etopo5.HTML}{ETOPO5}. \hl{Mapping in GMT, own elaboration}.}\label{fig:05}
 \end{figure}
 
 \newpar The 3D modelling in Figure \ref{fig:05} (3D model of Zagros mountains) was performed using the code in Listing \ref{List6}:
@@ -395,7 +395,7 @@ gmt psconvert IR3D165.ps -A1.2c -E720 -Tj -P -Z
 	\begin{center}
 		\includegraphics[height=12.0cm]{Fig_06.jpg}
 	\end{center}
-\caption{Free-air gravity anomaly of Iran. Mapping: GMT. Source: author.}\label{fig:06}
+\caption{Free-air gravity anomaly of Iran. \hl{Data source: gravity anomaly from Geosat and ERS 1 satellite altimetry}, \cite{Sandwell1997}. \hl{Mapping in GMT, own elaboration}.}\label{fig:06}
 \end{figure}
 
 \newsubsection {3.2. Cartographic visualisation by QGIS}
@@ -478,7 +478,7 @@ tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
 	\begin{center}
 		\includegraphics[height=9.0cm]{Fig_07.jpg}
 	\end{center}
-\caption{Elevation model by R ‘raster’ package. Source: author.}\label{fig:07}
+\caption{Elevation model by R ‘raster’ package. \hl{Data source: Shuttle Radar Topography Mission (SRTM)}, \cite{Farr}. \hl{Mapping in R, own elaboration}.}\label{fig:07}
 \end{figure}
 
 \newpar The 'tmap' functions 'tm\_scale\_bar', 'tm\_raster' and 'tm\_graticules' were used for plotting self-explaining cartographic elements. The main adjustments f the graphical output were set ip in the 'tm\_layout' function where the following elements were visualised (colour, size, locations of the elements on the map): legend, panel annotations, title, labels. 
@@ -493,7 +493,7 @@ tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
 	\begin{center}
 		\includegraphics[height=11.0cm]{Fig_08.jpg}
 	\end{center}
-\caption{Slope terrain model based on DEM of Iran. Mapping: R. Source: author.}\label{fig:08}
+\caption{Slope terrain model based on DEM of Iran. \hl{Data source: Shuttle Radar Topography Mission (SRTM)}, \cite{Farr}. \hl{Mapping in R, own elaboration}.}\label{fig:08}
 \end{figure}
 
 \newpar Three distinct Fold Belts shown in Figure \ref{fig:03} – the Kopet Dag, Elburz and Zagros – have the dense locality of major faults (shown red in Figure \ref{fig:03}) that are associated with the geologic formation controlled by the tectonic constraints on the evolution (e.g. salt‐bearing Neogene sediments, are folded and cut by faults in Alborz Mountains), as it is also reported in the existing works \citep{Baikpour,Burberry}. Variations in the fold patterns, geologic characteristics and de- formation style can be seen by comparison of the Figures \ref{fig:02} and \ref{fig:04} showing the three-dimensional and plain map visualisations of the topography and geology.
@@ -506,7 +506,7 @@ tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
 	\begin{center}
 		\includegraphics[height=11.0cm]{Fig_09.jpg}
 	\end{center}
-\caption{Aspect terrain model of Iran. Mapping: R. Source: author.}\label{fig:09}
+\caption{Aspect terrain model of Iran. \hl{Data source: Shuttle Radar Topography Mission (SRTM)}, \cite{Farr}. \hl{Mapping in R, own elaboration}.}\label{fig:09}
 \end{figure}
 
 \newpar The basin of Persian Gulf demonstrates mostly negative values from -65 to -40 m (light blue colours in Figure \ref{fig:05}) with slightly negative values in the Tigris and Euphrates rivers (aquamarine colours, from -40 to -20 m). The general gravity properties such as the free-air gravity Figure \ref{fig:06} also correspond to the geologic rock types and lithology of the region by the comparison of Figure \ref{fig:06} and \ref{fig:04} where the isolines of gravity correspond to the lithological rock types distribution, which points at the strong correlation between the geophysical and geological setting that can be explained by the rock density, porosity and structure. 
@@ -519,14 +519,14 @@ tmap_save(map1, "Iran_Slope.jpg", dpi = 300, height = 10)
 	\begin{center}
 		\includegraphics[height=11.0cm]{Fig_10.jpg}
 	\end{center}
-\caption{Hillshade terrain model of Iran. Mapping: R. Source: author.}\label{fig:10}
+\caption{Hillshade terrain model of Iran. \hl{Data source: Shuttle Radar Topography Mission (SRTM)}, \cite{Farr}. \hl{Mapping in R, own elaboration}.}\label{fig:10}
 \end{figure}
 
 \begin{figure}[H]
 	\begin{center}
 		\includegraphics[height=12.0cm]{Fig_11.jpg}
 	\end{center}
-\caption{DEM elevation model of Iran. Mapping: R. Source: author.}\label{fig:11}
+\caption{DEM elevation model of Iran. \hl{Data source: Shuttle Radar Topography Mission (SRTM)}, \cite{Farr}. \hl{Mapping in R, own elaboration}.}\label{fig:11}
 \end{figure}
 
 %\pagebreak % if necessary, use the command to break the page
